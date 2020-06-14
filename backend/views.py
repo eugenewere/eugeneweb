@@ -1239,8 +1239,7 @@ def project_pie_chart(request):
 
     for cate in Category.objects.all():
         categories.append(cate.name)
-        for proj in Portfolio.objects.all():
-            projects.append(Portfolio.objects.filter(category_id=cate.id).count())
+        projects.append(Portfolio.objects.filter(category_id=cate.id).count())
     return JsonResponse({
             'catelabel': categories,
             'project_count': projects,
