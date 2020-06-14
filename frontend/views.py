@@ -121,3 +121,4 @@ def view_cv(request):
         'languages':Language.objects.all()
     }
     return render(request, 'cv/cv.html', context)
+

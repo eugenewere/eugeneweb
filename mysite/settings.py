@@ -29,11 +29,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*tnm4g17=vh%k@i#_gpy_ky&i4hese_+-$g%%^_1%=#))l+ru1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["167.99.13.212", 'localhost', '127.0.0.1','www.genedev.guru','genedev.guru']
+DEBUG = False
 
 
+
+
+ALLOWED_HOSTS = ["167.99.13.212", 'localhost', '127.0.0.1', 'www.genedev.guru', 'genedev.guru']
 # Application definition
 
 INSTALLED_APPS = [
@@ -142,15 +143,7 @@ USE_TZ = True
 
 
 
-# if DEBUG:
-#     STATIC_URL = '/static/'
 
-# else:
-#     STATIC_URL = '/static/'
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]

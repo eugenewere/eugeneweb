@@ -1263,3 +1263,7 @@ def project_line_chart(request):
         'projectlabels': months_choices,
         'projectdata': month_data,
     })
+
+
+def error(request):
+    return render(request, 'PurpleAdmin-Free-Admin-Template/pages/samples/error-500.html')
