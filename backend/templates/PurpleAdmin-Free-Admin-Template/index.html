@@ -1,0 +1,355 @@
+{% extends 'PurpleAdmin-Free-Admin-Template/layout.html' %}
+{% load static %}
+{% load humanize %}
+{% block style %}
+    <style>
+        .kkk > a.active{
+            background-color:indianred !important;
+            transition: 1s;
+            transform-origin: left;
+            color: white !important;
+        }
+        .kkk > a:not(.active){
+
+            color: indianred !important;
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="page-header">
+          <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+              <i class="mdi mdi-home"></i>
+            </span> Dashboard </h3>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-3 stretch-card grid-margin">
+            <div class="card shadow-lg bg-gradient-danger card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'purple/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">
+                    Messages
+                    <i class="mdi mdi-message-alert mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{ messages_count }}</h2>
+                <h6 class="card-text ">
+                    <span><i class="far fa-envelope"></i> {{ unread_messages_count }}</span>
+                    <span class="ml-3"><i class="far fa-envelope-open "></i> {{ read_messages_count }} </span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 stretch-card grid-margin">
+            <div class="card shadow-lg bg-gradient-info card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'purple/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Projects Done<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{ p_count }}</h2>
+                <h6 class="card-text">Undone - ({{ undone_portfolio_count }})</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 stretch-card grid-margin">
+            <div class="card shadow-lg bg-gradient-success card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'purple/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Categories <i class="fas fa-layer-group mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{ categories_count }}</h2>
+{#                <h6 class="card-text">Increased by 5%</h6>#}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 stretch-card grid-margin">
+            <div class="card shadow-lg bg-gradient-warning card-img-holder text-white">
+              <div class="card-body">
+                <img src="{% static 'purple/assets/images/dashboard/circle.svg' %}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Upcoming <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">o</h2>
+{#                <h6 class="card-text">Increased by 5%</h6>#}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="clearfix">
+                  <h4 class="card-title float-left">Messages</h4>
+                  <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
+                </div>
+                <canvas style="height: 400px;" id="messages-chart" class="mt-4 w-100"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Project</h4>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item kkk" role="presentation">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pie</a>
+                      </li>
+                      <li class="nav-item kkk" role="presentation">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Line</a>
+                      </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                          <canvas style="height: 400px;" id="project-pie-chart2"></canvas>
+                          <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                          <canvas style="height: 400px;" id="project-line-chart"></canvas>
+                          <div id="traffic-chart-legend3" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Recent Tickets</h4>
+                <div class="table-responsive">
+                 <div class="col-12 mt-4">
+                    <table id="order-listing" class="table w-100">
+                      <thead>
+                        <tr>
+                          <th>Order #</th>
+                          <th>Icon</th>
+                          <th>Name</th>
+                          <th>Url</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
+                          <th>Action</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                         {% for social in socials %}
+                            <tr>
+                                  <td>{{ forloop.counter }}</td>
+                                  <td><i style="font-size: 43px; color: var(--red);" class="{{ social.icon }}"></i></td>
+                                  <td>{{ social.social_name|capfirst }}</td>
+                                  <td>
+                                      <a style="max-width: max-content; border-radius: 10px; color: indianred;" class="page-link" target="_blank" href="{{ social.social_url }}" >{{ social.social_url }}</a>
+                                  </td>
+                                  <td>{{ social.created_at|naturaltime }}</td>
+                                  <td>{{ social.updated_at|naturaltime }}</td>
+                                  <td>
+                                      <a href="{% url 'backend:socialmedia' %}" class="btn w-100 btn-gradient-info">View</a>
+                                  </td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+{% endblock content %}
+{% block script %}
+    <script>
+        var endpoint2 = '{% url 'backend:messages_chart' %}';
+        var defaultData2 =  [];
+        var labels2 = [];
+        $.ajax({
+            method: "GET",
+            url : endpoint2,
+            success : function (data) {
+                labels2 = data.monthlabels;
+                defaultData2= data.monthdata;
+
+                setMessageChartline();
+                // console.log(data);
+            },
+            error : function (error_data) {
+                console.log(error);
+                console.log(error_data);
+            },
+        });
+        function setMessageChartline() {
+            var ctx = document.getElementById('messages-chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels2,
+                    datasets: [{
+                        label: 'Messages',
+                        data: defaultData2,
+                        backgroundColor: [
+                            'rgba(239,2,53,0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(7,1,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        var endpoint3 = '{% url 'backend:project_pie_chart' %}';
+        var defaultData3 =  [];
+        var labels3 = [];
+        $.ajax({
+            method: "GET",
+            url : endpoint3,
+            success : function (data) {
+                labels3 = data.catelabel;
+                defaultData3= data.project_count;
+
+                setProjectChartPie();
+                // console.log(data);
+            },
+            error : function (error_data) {
+                console.log(error);
+                console.log(error_data);
+            },
+        });
+        function setProjectChartPie() {
+            var ctx = document.getElementById('project-pie-chart2').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels3,
+                    datasets: [{
+                        label: 'Projects',
+                        data: defaultData3,
+                        backgroundColor: [
+                            'rgba(239,2,53,0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(7,1,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        var endpoint4 = '{% url 'backend:project_line_chart' %}';
+        var defaultData4 =  [];
+        var labels4 = [];
+        $.ajax({
+            method: "GET",
+            url : endpoint4,
+            success : function (data) {
+                labels4 = data.projectlabels;
+                defaultData4= data.projectdata;
+
+                setProjectChartLine();
+                // console.log(data);
+            },
+            error : function (error_data) {
+                console.log(error);
+                console.log(error_data);
+            },
+        });
+        function setProjectChartLine() {
+            var ctx = document.getElementById('project-line-chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels4,
+                    datasets: [{
+                        label: 'Projects',
+                        data: defaultData4,
+                        backgroundColor: [
+                            'rgba(239,2,53,0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(7,1,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+
+{% endblock script %}
