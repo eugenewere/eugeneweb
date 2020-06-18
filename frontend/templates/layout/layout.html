@@ -48,7 +48,7 @@
                 }
             }
             </style>
-            <link rel="stylesheet" href="{% static 'css/colors/dark-mode.css' %}">
+{#            <link rel="stylesheet" href="{% static 'css/colors/dark-mode.css' %}">#}
         {% endblock style %}
 
 
@@ -148,7 +148,7 @@
 
                                 <div class="f_social_icon">
                                     {% for s in request|social_ac %}
-                                     <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ s.social_name }}" href="{{ s.social_url }}" class="{{ s.icon }}"></a>
+                                     <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ s.social_name }}" href="{{ s.social_url }}" class="{{ s.icon }} myshadow"></a>
                                     {% endfor %}
 
                                 </div>
@@ -178,20 +178,17 @@
         <hr>
 
 
-        <span class="shadow-lg dropdown " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="outline:none; position: fixed; bottom: 20px; left: 20px; padding: 10px; border-radius: 50%; color: white; background-color: red;">
-            <i style="font-size: 25px;" class="fas fa-palette"></i>
-               <div class="dropdown-menu">
-                <span class="dropdown-item dropdown-header">Light Mode</span>
-                <div class="dropdown-divider"></div>
-                   <div class="dropdown-item">
-                       <div class="custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="darkSwitch">
-                          <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-                       </div>
-                   </div>
-
-              </div>
-        </span>
+{#        <span class="shadow-lg dropdown " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="outline:none; position: fixed; bottom: 20px; left: 20px; padding: 10px; border-radius: 50%; color: white; background-color: red;">#}
+{#            <i style="font-size: 25px;" class="fas fa-palette"></i>#}
+{#               <div class="dropdown-menu">#}
+{#                <span class="dropdown-item dropdown-header">Light Mode</span>#}
+{#                <div class="dropdown-divider"></div>#}
+{#                   <div class="dropdown-item">#}
+{##}
+{#                   </div>#}
+{##}
+{#              </div>#}
+{#        </span>#}
         <!-- Back to top -->
         <a href="#" class="back-to-top rounded text-center" id="back-to-top">
             <i class="mdi mdi-chevron-up d-block"> </i>
@@ -241,8 +238,26 @@
         <!-- Main Js -->
         <script  src="{% static 'js/app.js' %}"></script>
         <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
-        <script  src="{% static 'css/colors/dark-mode-switch.min.js' %}"></script>
+{#        <script  src="{% static 'css/color/dark-mode-switch.min.js' %}"></script>#}
         <script>
+{#            var options = {#}
+{#              bottom: '64px', // default: '32px'#}
+{#              right: 'unset', // default: '32px'#}
+{#              left: '32px', // default: 'unset'#}
+{#              time: '0.5s', // default: '0.3s'#}
+{#              mixColor: '#fff', // default: '#fff'#}
+{#              backgroundColor: '#fff',  // default: '#fff'#}
+{#              buttonColorDark: '#100f2c',  // default: '#100f2c'#}
+{#              buttonColorLight: '#fff', // default: '#fff'#}
+{#              saveInCookies: false, // default: true,#}
+{#              label: '🌓', // default: ''#}
+{#              autoMatchOsTheme: false // default: true#}
+{#            }#}
+{##}
+{#            const darkmode = new Darkmode(options);#}
+{#            darkmode.showWidget();#}
+
+
             //Attaching event handler to .dropdown selector.
 
            $(document).ready(function(){

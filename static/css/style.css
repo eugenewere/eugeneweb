@@ -21,6 +21,14 @@
  *    16.  Switcher    *
  ======================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;display=swap");
+:root{
+  --bgcolor: #ecf0f3;
+  --boxshaddowbg: linear-gradient(45deg, #ecf0f3, #ffffff);
+  --boxshaddowbg2: linear-gradient(145deg, #d4d8db, #fdffff);
+  --boxshadoww: 13px 13px 20px #cbced1, -14px -14px 20px #ffffff;
+  --boxshadowwinset: inset 8px 8px 10px #c6cacc, inset -9px -9px 10px #ffffff;
+}
+
 .btn {
   padding: 12px 24px;
   outline: none;
@@ -32,6 +40,7 @@
   transition: all 0.3s;
   text-transform: uppercase;
   font-weight: 500;
+
 }
 
 .btn:focus {
@@ -146,6 +155,7 @@ body {
   overflow-x: hidden !important;
   font-size: 15px;
   color: #161c2d;
+  background:var(--bgcolor);
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -780,10 +790,13 @@ p {
   right: 3%;
   left: 10%;
   bottom: 0%;
-  border-radius: 5px;
+  border-radius: 15px;
   border: 16px solid #f8f9fa;
+  box-shadow: var(--boxshadoww), var(--boxshadowwinset);
 }
-
+.shdow{
+   box-shadow: var(--boxshadoww);
+}
 .about-info .name {
   font-size: 18px;
 }
@@ -804,10 +817,21 @@ p {
 
 .interests-desc {
   -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  transition: all 1s ease-in-out;
+  border-radius: 4px;
   border: 2px solid transparent;
+background: var(--bgcolor);
+  /*box-shadow:  -10px -10px 29px #e8e8e8,*/
+  /*           10px 10px 29px #ffffff;*/
+  box-shadow: var(--boxshadoww);
 }
-
+.interests-desc:hover {
+  background: var(--boxshaddowbg);
+  box-shadow: var(--boxshadowwinset);
+  -webkit-box-shadow: var(--boxshadowwinset);
+  transition: 1s all;
+  border: 2px solid #e9ecef;
+}
 .interests-desc .hobbies:before {
   content: "";
   position: absolute;
@@ -815,7 +839,8 @@ p {
   left: 55px;
   width: 2px;
   height: 100%;
-  background: #e9ecef;
+  background: #ffffff;
+  /*background: #e9ecef;*/
   z-index: 1;
 }
 
@@ -832,14 +857,7 @@ p {
   font-weight: 500;
 }
 
-.interests-desc:hover {
-  background: #ffffff !important;
-  -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
-          box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
-  border: 2px solid #e9ecef;
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-}
+
 
 .interests-desc:hover .icon {
   color: #c52c20;
@@ -847,7 +865,14 @@ p {
 
 .service-wrapper {
   -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  transition: all 1s;
+  border-radius: 15px;
+  background:  var(--boxshaddowbg2);
+
+   box-shadow: var(--boxshadoww);
+
+  /*border-color: var(--bgcolor);*/
+  /*border: none;*/
 }
 
 .service-wrapper .icon i {
@@ -875,8 +900,10 @@ p {
 }
 
 .service-wrapper:hover {
-  -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
-          box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+  /*-webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);*/
+  /*        box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);*/
+  transition: 1s all;
+  box-shadow: var(--boxshadowwinset);
   border: transparent !important;
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
@@ -961,7 +988,9 @@ p {
 
 .timeline-page .timeline-item .date-label-left, .timeline-page .timeline-item .duration-right {
   margin-right: 15px;
+
 }
+
 
 .timeline-page .timeline-item .date-label-left:after, .timeline-page .timeline-item .duration-right:after {
   border: 2px solid #161c2d;
@@ -977,6 +1006,7 @@ p {
 
 .timeline-page .timeline-item .date-label-left {
   float: right;
+  /*box-shadow: var(--boxshadoww) !important;*/
   margin-right: 15px;
 }
 
@@ -986,6 +1016,7 @@ p {
 
 .timeline-page .timeline-item .duration-right {
   float: left;
+  /*box-shadow: var(--boxshadoww) !important;*/
   margin-left: 15px;
 }
 
@@ -996,6 +1027,8 @@ p {
 .timeline-page .timeline-item .event {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  /*box-shadow: var(--boxshadoww) !important;*/
+  /*background:  linear-gradient(145deg, #d4d8db, #fdffff);;*/
 }
 
 .timeline-page .timeline-item .event .title {
@@ -1045,6 +1078,8 @@ p {
     float: left !important;
     margin: 0 0 30px 15px !important;
     text-align: left !important;
+    background:  linear-gradient(145deg, #d4d8db, #fdffff);;
+
   }
   .timeline-page .timeline-item .duration:after {
     left: -21px !important;
@@ -1657,3 +1692,13 @@ ul.pattern .dark-pink {
 
       }
 
+.myshadow{
+   background:  var(--boxshaddowbg2) !important;
+   box-shadow: var(--boxshadoww) !important;
+   transition: 1s all ease;
+  border-radius: 6px;
+}
+.myshadow:hover{
+   background:  var(--boxshaddowbg2) !important;
+   box-shadow: var(--boxshadowwinset) !important;
+}

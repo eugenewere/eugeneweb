@@ -66,9 +66,9 @@
             {% endif %}
 
     		<div class="container " {% if announces.count > 0 %} style="padding: 15px 0;" {% endif %}>
-			    <a class="navbar-brand" href="{% url 'frontend:home' %}">
-                    <img src="{% static 'images/logo.png' %}" class="l-dark" height="15" alt="">
-                    <img src="{% static 'images/logo-light.png' %}" class="l-light" height="15" alt="">
+			    <a class="navbar-brand p-0" href="{% url 'frontend:home' %}">
+                    <img style="height: 30px;" src="{% static 'images/darklogo.png' %}" class="l-dark"  alt="">
+                    <img style="height: 30px;" src="{% static 'images/lightlogo.png' %}" class="l-light"  alt="">
                 </a>
 			    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="mdi mdi-menu"></span>

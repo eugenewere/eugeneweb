@@ -1,7 +1,7 @@
 
 .loder{}
 .new_footer_area {
-    background: #fbfbfd;
+    background: var(--bgcolor);
 }
 
 
@@ -70,7 +70,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     height: 44px;
     line-height: 43px;
     background: transparent;
-    border: 1px solid #e2e2eb;
+    /*border: 1px solid #e2e2eb;*/
     font-size: 24px;
 }
 .f_social_icon a {
@@ -113,13 +113,13 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     color:black;
 }
 
-.new_footer_top .f_social_icon a:hover {
-    background: red;
-    border-color: black;
-    color:white;
-    transition: 1s all;
-    transform: rotate(360deg);
-}
+/*.new_footer_top .f_social_icon a:hover {*/
+/*    background: red;*/
+/*    border-color: black;*/
+/*    color:white;*/
+/*    transition: 1s all;*/
+/*    transform: rotate(360deg);*/
+/*}*/
 .new_footer_top .f_social_icon a + a {
     margin-left: 4px;
 }
