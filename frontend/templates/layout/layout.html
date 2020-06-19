@@ -27,12 +27,12 @@
         <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}"/>
         <link rel="stylesheet"  href="{% static 'css/animate.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+{#        <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>#}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <!-- Custom Css -->
         <script src="https://kit.fontawesome.com/16d33ecbbb.js" crossorigin="anonymous"></script>
-        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" id="color-opt">
+{#        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />#}
+        <link  href="{% static 'css/colors/default.css' %}" rel="stylesheet" id="color-opt">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
         {% block style %}
             <style>
@@ -48,9 +48,9 @@
                 }
             }
             </style>
-{#            <link rel="stylesheet" href="{% static 'css/colors/dark-mode.css' %}">#}
-        {% endblock style %}
 
+        {% endblock style %}
+        <link rel="stylesheet" href="{% static 'css/colors/dark-mode.css' %}">
 
     </head>
 
@@ -96,7 +96,7 @@
                         <div class=" mb-4 col-lg-3 col-md-6">
                             <div class="f_widget company_widget wow fadeInLeft text-left" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Subscribe To Newsletters</h3>
-                                <p class="text-justify">Don’t miss any updates of new projects!</p>
+                                <p class="text-justify kkk">Don’t miss any updates of new projects!</p>
                                 <form action="{% url 'frontend:addsubscribers' %}" class="f_subscribe_two mailchimp" method="post"  id="newsletter_form">
                                     {% csrf_token %}
                                     <label for="Email" class="inp">
@@ -119,11 +119,11 @@
                             <div class="f_widget about-widget pl_70 wow fadeInLeft text-left" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Navigation</h3>
                                 <ul class="list-unstyled f_list">
-                                    <li><a href="#home">Home</a></li>
-                                    <li><a href="#services">Services</a></li>
-                                    <li><a href="#resume">Resume</a></li>
-                                    <li><a href="#projects">Projects</a></li>
-                                    <li><a href="#contact">Contacts</a></li>
+                                    <li><a class="kkk" href="#home">Home</a></li>
+                                    <li><a class="kkk" href="#services">Services</a></li>
+                                    <li><a class="kkk" href="#resume">Resume</a></li>
+                                    <li><a class="kkk" href="#projects">Projects</a></li>
+                                    <li><a class="kkk" href="#contact">Contacts</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                             <div class="f_widget about-widget pl_70 wow fadeInLeft text-left" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Other</h3>
                                 <ul class="list-unstyled f_list">
-                                    <li><a href="#">Download Resume</a></li>
+                                    <li><a class="kkk" href="{% url 'frontend:view_cv' %}">View Resume</a></li>
 {#                                    <li><a href="#"></a></li>#}
 {#                                    <li><a href="#">Reporting</a></li>#}
 {#                                    <li><a href="#">Documentation</a></li>#}
@@ -144,7 +144,7 @@
                             <div class="f_widget social-widget pl_70 wow fadeInLeft text-left" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
 
-                                    <p class="text-justify" style="color: #6a7695;">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects, Get In-touch.</p>
+                                    <p class="text-justify kkk" style="color: #6a7695;">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects, Get In-touch.</p>
 
                                 <div class="f_social_icon">
                                     {% for s in request|social_ac %}

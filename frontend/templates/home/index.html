@@ -157,7 +157,7 @@
                         <div class=" row" >
 
                             <div class="about-hero" >
-                                <h4 class="title text-custom  myside-banner-text"  data-elements="Web Designer, Web Developer, Photographer">
+                                <h4 style="text-shadow:4px 8px 5px #000000, -7px -4px 5px #28292d; " class="title text-custom  myside-banner-text"  data-elements="Web Designer, Web Developer, Photographer">
                                     {{ about.name }}</h4>
 
                                 <img style="position: absolute;" src="{{ about.image.url }}"  class="img-fluid mx-auto d-block position-relative " alt="">
@@ -207,7 +207,7 @@
 
                         {% for hobby in hobbies %}
                             <div id="d1" class="col-lg-3 col-md-4 col-12 mt-4 pt-2">
-                                <div class="interests-desc  position-relative p-2 rounded">
+                                <div class="interests-desc myshadow  position-relative p-2 rounded">
                                     <div class="hobbies d-flex">
                                         <div class="icon text-center rounded-pill mr-4">
                                             <i style="font-size: 24px" class=" {{ hobby.icon }}"></i>
@@ -362,35 +362,7 @@
                                 </div><!--end timeline item-->
                             {% endfor %}
 
-{#                            <div class="timeline-item mb-4">#}
-{#                                <div class="row">#}
-{#                                    <div class="col-lg-6 col-md-6 col-sm-6 order-sm-1 order-2">#}
-{#                                        <div class="event event-description-left rounded p-4 border float-left text-right">#}
-{#                                            <h4 class="title mb-0 text-capitalize">Web Developer</h4>#}
-{#                                            <small class="company">Oppo - HR Manager</small>#}
-{#                                            <p class="timeline-subtitle mt-3 mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia magna vel molestie faucibus. Donec auctor et urnaLorem ipsum dolor sit amet.</p>#}
-{#                                        </div>#}
-{#                                    </div><!--end col-->#}
-{#                                    <div class="col-lg-6 col-md-6 col-sm-6 order-sm-2 order-1">#}
-{#                                        <div class="duration duration-right rounded border p-2 pl-4 pr-4 position-relative shadow text-left">2012 - 2015</div>#}
-{#                                    </div><!--end col-->#}
-{#                                </div><!--end row-->#}
-{#                            </div><!--end timeline item-->#}
-{##}
-{#                            <div class="timeline-item mb-4">#}
-{#                                <div class="row">#}
-{#                                    <div class="col-lg-6 col-md-6 col-sm-6">#}
-{#                                        <div class="duration date-label-left border rounded p-2 pl-4 pr-4 position-relative shadow text-left"> 2008 - 2010</div>#}
-{#                                    </div><!--end col-->#}
-{#                                    <div class="col-lg-6 col-md-6 col-sm-6">#}
-{#                                        <div class="event event-description-right rounded p-4 border float-left text-left">#}
-{#                                            <h4 class="title mb-0 text-capitalize">Graphic Designer</h4>#}
-{#                                            <small class="company">Apple - Testor</small>#}
-{#                                            <p class="timeline-subtitle mt-3 mb-0 text-muted">Therefore always free from repetition, injected humour, or non-characteristic words etc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, </p>#}
-{#                                        </div>#}
-{#                                    </div><!--end col-->#}
-{#                                </div><!--end row-->#}
-{#                            </div><!--end timeline item-->#}
+{#
                         </div><!--end timeline page-->
                         <!-- TIMELINE END -->
                     </div><!--end col-->
@@ -420,7 +392,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-12 col-lg-5 my-height"  >
                                     <div class="row h-100 myshadow padding-less2 img position-relative overflow-hidden " data-jarallax='{"speed": 0.5}'>
-                                        <img class="expert_image" src="{% if not expertise_image %}{% static 'images/blog/sideboard.gif' %}{% else %}{{expertise_image.image.url}}"{% endif %}"  alt="">
+                                        <img class="expert_image" src="{% if not expertise_image %}{% static 'images/blog/sideboard.gif' %}{% else %}{{expertise_image.image.url}}{% endif %}"  alt="">
                                         <div class="my_animated_ovelay overlay-animated" ></div>
                                     </div>
                                 </div>
@@ -673,7 +645,7 @@
                                                  </div><!--end col-->
                                                  <div class="col-lg-6 col-sm-12 p-3 col-md-6">
                                                     <label for="last_name" class="inp">
-                                                      <input class="" type="text" name="last_name" id="last_name" placeholder="&nbsp;">
+                                                      <input class="myshadow2" type="text" name="last_name" id="last_name" placeholder="&nbsp;">
                                                       <span class="label">Last Name</span>
                                                       <span class="focus-bg"></span>
                                                     </label>
@@ -682,21 +654,21 @@
 
                                                 <div class="col-lg-12 col-md-6 p-3">
                                                     <label for="email" class="inp">
-                                                      <input class="" type="email" name="email" id="email" placeholder="&nbsp;">
+                                                      <input class="myshadow2" type="email" name="email" id="email" placeholder="&nbsp;">
                                                       <span class="label">Email</span>
                                                       <span class="focus-bg"></span>
                                                     </label>
                                                 </div><!--end col-->
                                                 <div class="col-lg-12 p-3">
                                                     <label for="subject" class="inp">
-                                                      <input class="" type="text" name="subject" id="subject" placeholder="&nbsp;">
+                                                      <input class="myshadow2" type="text" name="subject" id="subject" placeholder="&nbsp;">
                                                       <span class="label">Subject</span>
                                                       <span class="focus-bg"></span>
                                                     </label>
                                                 </div><!--end col-->
                                                 <div class="col-lg-12 p-3">
-                                                    <div class="form-group">
-                                                        <textarea name="message" id="messsage" rows="4" class="form-control border rounded "  placeholder="Your Message :"></textarea>
+                                                    <div class="form-group inp">
+                                                        <textarea name="message" id="messsage " rows="4" class="rounded myshadow2"  placeholder="Your Message :"></textarea>
                                                     </div>
                                                 </div><!--end col-->
 
