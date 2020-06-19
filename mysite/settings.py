@@ -38,7 +38,8 @@ ALLOWED_HOSTS = ["167.99.13.212", 'localhost', '127.0.0.1', 'www.genedev.guru', 
 # Application definition
 
 INSTALLED_APPS = [
-
+    'frontend.apps.FrontendConfig',
+    'backend.apps.BackendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,8 +50,7 @@ INSTALLED_APPS = [
     'africastalking',
     'django_cleanup',
     'django.contrib.humanize',
-    'frontend.apps.FrontendConfig',
-    'backend.apps.BackendConfig',
+
 
 ]
 
