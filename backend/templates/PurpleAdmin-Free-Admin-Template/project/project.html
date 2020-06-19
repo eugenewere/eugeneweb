@@ -200,9 +200,9 @@
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuOutlineButton4">
                                               <h6 class="dropdown-header">Status</h6>
                                                 {% if p.status == "COOMINGSOON" %}
-                                                    <a class="dropdown-item" href="{% url "backend:editportfoliostatus"  p.id %}">COOMING SOON</a>
+                                                    <a class="dropdown-item" href="{% url "backend:editportfoliostatus"  p.id %}">DONE</a>
                                                 {% elif p.status == "DONE" %}
-                                                     <a class="dropdown-item" href="{% url "backend:editportfoliostatus"  p.id %}">DONE</a>
+                                                    <a class="dropdown-item" href="{% url "backend:editportfoliostatus"  p.id %}">COOMING SOON</a>
                                                 {% endif %}
 
                                             </div>

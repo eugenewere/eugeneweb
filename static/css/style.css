@@ -458,7 +458,7 @@ p {
 }
 
 .navbar-custom {
-
+background-color: transparent;
   width: 100%;
   border-radius: 0px;
   z-index: 999;
@@ -541,7 +541,7 @@ p {
 .nav-sticky.navbar-custom {
   margin-top: 0px;
   padding: 12px 0px;
-  background-color: #ffffff;
+  background-color:#ecf0f3;
   -webkit-box-shadow: 0 10px 33px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 33px rgba(0, 0, 0, 0.1);
   color: #161c2d !important;
@@ -621,7 +621,7 @@ p {
 
 @media (min-width: 200px) and (max-width: 768px) {
   .navbar-custom {
-    background-color: #ffffff !important;
+    background-color:#ffffff !important;
     padding: 0 !important;
   }
   .navbar-custom .navbar-nav .nav-item .nav-link {
@@ -1237,10 +1237,10 @@ background: var(--bgcolor);
   -webkit-transform: scale(1);
           transform: scale(1);
 }
-.portfolio-box:hover .work-img .comming-soon {
+.portfolio-box .work-img .comming-soon {
   opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  /*-webkit-transform: scale(1);*/
+  /*        transform: scale(1);*/
 }
 
 .client-review {

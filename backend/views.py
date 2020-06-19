@@ -878,7 +878,7 @@ def editportfoliostatus(request, portfolio_id):
         Portfolio.objects.filter(id=counter.id).update(
             status="COOMINGSOON",
         )
-        sweetify.error(request, 'Project Status Updated Successfully')
+        sweetify.success(request, 'Project Status Updated Successfully')
     return redirect('backend:portfolio')
 
 

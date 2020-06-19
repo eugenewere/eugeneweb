@@ -8,9 +8,9 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>GeneDev Admin</title>
-
+        <link rel="shortcut icon" href="{% static 'images/portfolio/portfoliofavicon3.png' %}">
         <!-- plugins:css -->
-        <link rel="shortcut icon" href="{% static 'images/portfolio/portfoliofavicon.png' %}">
+{#        <link rel="shortcut icon" href="{% static 'images/portfolio/portfoliofavicon.png' %}">#}
         <link rel="stylesheet" href="{% static 'purple/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
 {#        <link rel="stylesheet" href="{% static 'p' %}">#}
         <link rel="stylesheet" href="{% static 'purple/assets/vendors/css/vendor.bundle.base.css' %}">
@@ -45,7 +45,10 @@
                font-weight: 500;
           }
             body {
-            cursor: none !important;
+                cursor: none !important;
+                zoom: 80% !important;
+                -ms-zoom:80% !important;
+
             }
             *:hover{
             cursor: none !important;

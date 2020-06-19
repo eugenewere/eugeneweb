@@ -22,9 +22,9 @@ from mysite import settings
 
 
 urlpatterns = [
-    path('djangoadmin/', admin.site.urls),
+    path('djangoadmineugene/', admin.site.urls),
     path('', include('frontend.urls')),
-    path('admin/', include('backend.urls')),
+    path('portfolioadmin/', include('backend.urls')),
 
 ]
 #     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

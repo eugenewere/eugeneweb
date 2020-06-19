@@ -38,6 +38,8 @@ def home(request):
 def portfolio(request):
     context = {
         'announces': AnnouncementBar.objects.filter(status='SHOW'),
+        "projects": Portfolio.objects.all(),
+        'categories': Category.objects.all(),
     }
     return render(request, 'portfolios/portfolio.html', context)
 
