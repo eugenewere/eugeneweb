@@ -102,7 +102,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfolio',
-            'USER': 'eugene',
+            'USER': 'eugenew',
             'PASSWORD': '123$Insecure',
             'HOST': 'localhost',
             'PORT': '',
