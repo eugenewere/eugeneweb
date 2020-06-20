@@ -62,10 +62,15 @@
             {% endif %}
 
     		<div class="container " {% if announces.count > 0 %} style="padding: 6px 0;" {% endif %}>
-			    <a class="navbar-brand p-0" href="{% url 'frontend:home' %}">
+			    <a id="logo1" class="navbar-brand p-0" href="{% url 'frontend:home' %}">
                     <img style="height: 30px;" src="{% static 'images/darklogo.png' %}" class="l-dark"  alt="">
                     <img style="height: 30px;" src="{% static 'images/lightlogo.png' %}" class="l-light"  alt="">
                 </a>
+                <a style="display: none;" id="logo2" class="navbar-brand p-0" href="{% url 'frontend:home' %}">
+                    <img style="height: 30px;" src="{% static 'images/lightlogo.png' %}" class="l-dark"  alt="">
+                    <img style="height: 30px;" src="{% static 'images/darklogo.png' %}" class="l-light"  alt="">
+                </a>
+
 			    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="mdi mdi-menu"></span>
 			    </button><!--end button-->
@@ -88,12 +93,16 @@
 			            <li class="nav-item">
 			                <a class="nav-link" href="#contact">Contact</a>
                         </li><!--end nav item-->
-{#                        <li class="nav-item">#}
-{#                              <div class="custom-control custom-switch">#}
-{#                                  <input type="checkbox" class="custom-control-input" id="darkSwitch">#}
-{#                                  <label class="custom-control-label" for="darkSwitch">Dark Mode</label>#}
-{#                               </div>#}
-{#                        </li>#}
+                        <li class="nav-item d-flex justify-content-center align-items-center">
+                              <div class="ml-md-3">
+                                <input type="checkbox" class="mcheckbox" id="chk" />
+                                <label class="mlabel " for="chk">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                    <div class="mball"></div>
+                                </label>
+                            </div>
+                        </li>
 
                     </ul>
                 </div>
@@ -157,7 +166,7 @@
                         <div class=" row" >
 
                             <div class="about-hero" >
-                                <h4 style="text-shadow:4px 8px 5px #000000, -7px -4px 5px #28292d; " class="title text-custom  myside-banner-text"  data-elements="Web Designer, Web Developer, Photographer">
+                                <h4 style="" class="title text-custom  myside-banner-text text-shadow"  data-elements="Web Designer, Web Developer, Photographer">
                                     {{ about.name }}</h4>
 
                                 <img style="position: absolute;" src="{{ about.image.url }}"  class="img-fluid mx-auto d-block position-relative " alt="">
@@ -328,7 +337,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="main-icon text-center mt-4 pt-2">
-                            <i class="pe-7s-study rounded-pill"></i>
+                            <i class="pe-7s-study rounded-pill icon-shadow icon-light"></i>
                         </div>
                         <div class="timeline-page pt-4 position-relative">
                             {% for wp in participations %}
@@ -361,8 +370,6 @@
                                     </div><!--end row-->
                                 </div><!--end timeline item-->
                             {% endfor %}
-
-{#
                         </div><!--end timeline page-->
                         <!-- TIMELINE END -->
                     </div><!--end col-->

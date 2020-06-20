@@ -13,12 +13,35 @@
  *  03.  Loader         *
  *  04.  Back to top    *
  =======================*/
+ $(window).on('load', function() {
 
+        let mode = localStorage.getItem('mytheme');
+        if(mode === 'dark'){
+            document.body.setAttribute('data-theme', 'dark');
+            // $('#preloader').css('background-color',' #1a1b1f');
+            // $('#chk').prop("checked", true);
+            $('#status').fadeOut();
+            $('#preloader').delay(350).fadeOut('slow');
+            $('body').delay(350).css({
+                'overflow': 'visible'
+            });
+        }
+        else {
+             document.body.removeAttribute('data-theme');
+             // $('#chk').prop("checked", false);
+             $('#status').fadeOut();
+             $('#preloader').delay(350).fadeOut('slow');
+             $('body').delay(350).css({
+                'overflow': 'visible'
+             });
+        }
+
+    });
 ! function($) {
     "use strict";
     //*********************/ 
     //         Menu       */
-    //*********************/ 
+    //*********************/
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
 
@@ -47,13 +70,7 @@
     //*********************/ 
     //       Loader       */
     //*********************/ 
-    $(window).on('load', function() {
-        $('#status').fadeOut();
-        $('#preloader').delay(350).fadeOut('slow');
-        $('body').delay(350).css({
-            'overflow': 'visible'
-        });
-    });
+
 
 
     //*********************/ 
@@ -76,93 +93,82 @@
 
 
 
-// =========================================================================
-
-// {#CKEDITOR.replace( 'comment' );#}
-//              ClassicEditor
-//                 .create( document.querySelector( '#comments' ) )
-//                 .then( editor => {
-//                         console.log( editor );
-//                 } )
-//                 .catch( error => {
-//                         console.error( error );
-//                 } );
 
 
-            $(document).ready(function() {
+$(document).ready(function() {
 
-               $("#owl-example").owlCarousel({
-                   items:1,
+$("#owl-example").owlCarousel({
+   items:1,
 
-                   autoplay: 2000,
-                   autoplayHoverPause: true,
-                   animateOut: 'fadeOut',
-                   animateIn: 'fadeIn',
-                   // {#navigation:true,#}
-                   navText: ["<span class='ion-md-arrow-back'></span>", "<span class='ion-chevron-right'></span>"],
-                   navigation : true,
-                    navigationText : ["prev","next"],
-                    rewindNav : true,
-                    scrollPerPage : true,
+   autoplay: 2000,
+   autoplayHoverPause: true,
+   animateOut: 'fadeOut',
+   animateIn: 'fadeIn',
+   // {#navigation:true,#}
+   navText: ["<span class='ion-md-arrow-back'></span>", "<span class='ion-chevron-right'></span>"],
+   navigation : true,
+    navigationText : ["prev","next"],
+    rewindNav : true,
+    scrollPerPage : true,
 
-               });
+});
 
-            });
+});
 
 
-                var $animation_elements = $('.overlay-animated');
-                var $window = $(window);
+var $animation_elements = $('.overlay-animated');
+var $window = $(window);
 
-                function check_if_in_view() {
-                  var window_height = $window.height();
-                  // {#console.log(window_height);#}
-                  var window_top_position = $window.scrollTop();
-                  // {#console.log(window_top_position);#}
-                  var window_bottom_position = (window_top_position + window_height);
-                  // {#console.log(window_bottom_position);#}
+function check_if_in_view() {
+  var window_height = $window.height();
+  // {#console.log(window_height);#}
+  var window_top_position = $window.scrollTop();
+  // {#console.log(window_top_position);#}
+  var window_bottom_position = (window_top_position + window_height);
+  // {#console.log(window_bottom_position);#}
 
-                  $.each($animation_elements, function() {
-                    var $element = $(this);
-                    var element_height = $element.outerHeight();
-                    // {#console.log(element_height);#}
-                    var element_top_position = $element.offset().top;
-                    var element_bottom_position = (element_top_position + element_height);
+  $.each($animation_elements, function() {
+    var $element = $(this);
+    var element_height = $element.outerHeight();
+    // {#console.log(element_height);#}
+    var element_top_position = $element.offset().top;
+    var element_bottom_position = (element_top_position + element_height);
 
-                    //check to see if this current container is within viewport
-                    if ((element_bottom_position >= window_top_position) &&
-                        (element_top_position <= window_bottom_position)) {
-                      $element.addClass('animate-it');
-                    } else {
-                      $element.removeClass('animate-it');
-                    }
-                  });
-                }
+    //check to see if this current container is within viewport
+    if ((element_bottom_position >= window_top_position) &&
+        (element_top_position <= window_bottom_position)) {
+      $element.addClass('animate-it');
+    } else {
+      $element.removeClass('animate-it');
+    }
+  });
+}
 
-                $window.on('scroll resize', check_if_in_view);
-                $window.trigger('scroll');
+$window.on('scroll resize', check_if_in_view);
+$window.trigger('scroll');
 
 
 
 
-                // socialholder
-                var timeout;
-                var social_holder = document.getElementById("social-holder");
+// socialholder
+var timeout;
+var social_holder = document.getElementById("social-holder");
 
-                document.ontouchmove= function(){
-                     social_holder.style.right=5+"px";
-                  clearTimeout(timeout);
-                  timeout = setTimeout(function(){
-                      social_holder.style.right= -65+"px";
+document.ontouchmove= function(){
+     social_holder.style.right=5+"px";
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+      social_holder.style.right= -65+"px";
 
-                  }, 3000);
-                };
-                document.onmousemove = function(){
-                     social_holder.style.right=5+"px";
-                  clearTimeout(timeout);
-                  timeout = setTimeout(function(){
-                      social_holder.style.right= -65+"px";
+  }, 3000);
+};
+document.onmousemove = function(){
+     social_holder.style.right=5+"px";
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+      social_holder.style.right= -65+"px";
 
-                  }, 3000);
-                };
+  }, 3000);
+};
                 // socialholder
 
