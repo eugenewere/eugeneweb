@@ -1800,7 +1800,22 @@ ul.pattern .dark-pink {
 	transform: scale(1.5);
   box-shadow: 4px 4px 5px #cbced1, -6px -4px 5px #ffffff;
 }
- .mlabel .mball {
+ .mlabel2 {
+	background-color: transparent;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 19px;
+	width: 44px;
+    margin-bottom: 1px;
+	transform: scale(1.5);
+    box-shadow:  0 0 0 transparent;
+}
+ .mlabel .mball, .mlabel2 .mball {
 	background-color: rgba(0, 0, 0, 0.84);
 	border-radius: 50%;
 	position: absolute;
@@ -1811,7 +1826,7 @@ ul.pattern .dark-pink {
 	transform: translateX(0px);
 	transition: transform 0.2s linear;
 }
-.mcheckbox:checked + .mlabel .mball {
+.mcheckbox:checked + .mlabel .mball , .mcheckbox:checked + .mlabel2 .mball {
 	transform: translateX(24px);
 }
 .fa-moon {

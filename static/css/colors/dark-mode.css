@@ -1910,7 +1910,23 @@ background-color: transparent;
 	transform: scale(1.5);
     box-shadow: 3px 2px 5px #000000, -3px -2px 5px #444547;
 }
-[data-theme="dark"]  .mlabel .mball {
+[data-theme="dark"] .mlabel2 {
+	background-color: transparent;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 19px;
+	width: 44px;
+    margin-bottom: 1px;
+	transform: scale(1.5);
+    box-shadow: 0 0 0 transparent;
+}
+
+[data-theme="dark"]  .mlabel .mball, [data-theme="dark"] .mlabel2 .mball {
 	background-color: #fff;
 	border-radius: 50%;
 	position: absolute;
@@ -1921,7 +1937,7 @@ background-color: transparent;
 	transform: translateX(0px);
 	transition: transform 0.2s linear;
 }
-[data-theme="dark"] .mcheckbox:checked + .mlabel .mball {
+[data-theme="dark"] .mcheckbox:checked + .mlabel .mball, [data-theme="dark"] .mcheckbox:checked + .mlabel2 .mball {
 	transform: translateX(24px);
 }
 [data-theme="dark"] .fa-moon {

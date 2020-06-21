@@ -51,6 +51,20 @@
             $(".sticky").removeClass("nav-sticky");
         }
     });
+     $(window).scroll(function() {
+          var scroll = $(window).scrollTop();
+
+        if (scroll <= 50) {
+            console.log(scroll);
+            $('#ckh').removeClass('mlabel');
+            $('#ckh').addClass('mlabel2');
+        }else {
+             console.log(scroll);
+             $('#ckh').removeClass('mlabel2');
+            $('#ckh').addClass('mlabel');
+
+        }
+     });
 
     $('.navbar-nav a, .mouse-down').on('click', function(event) {
         var $anchor = $(this);
