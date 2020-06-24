@@ -58,7 +58,8 @@
                                 {% if a.icon %}
                                     <i class="{{ a.icon }} px-2"></i>
                                 {% endif %}
-                                {{ a.message|capfirst }}</span>
+                                 <span class="element2" data-elements2="{{ a.message|capfirst }}_"></span>
+                            </span>
                             <span style="color: {{ a.text_color }};" aria-hidden="true">&times;</span>
                         </div>
                     </div>
@@ -66,9 +67,13 @@
             {% endif %}
 
     		<div class="container " {% if announces.count > 0 %} style="padding: 15px 0;" {% endif %}>
-			    <a class="navbar-brand p-0" href="{% url 'frontend:home' %}">
+			    <a id="logo1" class="navbar-brand p-0" href="{% url 'frontend:home' %}">
                     <img style="height: 30px;" src="{% static 'images/darklogo.png' %}" class="l-dark"  alt="">
                     <img style="height: 30px;" src="{% static 'images/lightlogo.png' %}" class="l-light"  alt="">
+                </a>
+                <a style="display: none;" id="logo2" class="navbar-brand p-0" href="{% url 'frontend:home' %}">
+                    <img style="height: 30px;" src="{% static 'images/lightlogo.png' %}" class="l-dark"  alt="">
+                    <img style="height: 30px;" src="{% static 'images/darklogo.png' %}" class="l-light"  alt="">
                 </a>
 			    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="mdi mdi-menu"></span>
@@ -80,18 +85,19 @@
                         <a class="nav-link" href="{% url 'frontend:home' %}">Home</a>
                     </li><!--end nav item-->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'frontend:home' %}">Services</a>
-                    </li><!--end nav item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'frontend:home' %}">Resume</a>
-                    </li><!--end nav item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'frontend:home' %}">Projects</a>
+                        <a class="nav-link" href="#projects">Portfolio</a>
                     </li><!--end nav item-->
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'frontend:home' %}">Contact</a>
-                    </li><!--end nav item-->
+                     <li class="nav-item d-flex justify-content-center align-items-center">
+                          <div class="ml-md-3">
+                            <input type="checkbox" class="mcheckbox" id="chk" />
+                            <label id="ckh" class="mlabel " for="chk">
+                                <i class="fas fa-sun"></i>
+                                <i class="fas fa-moon"></i>
+                                <div class="mball"></div>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
             </div>
 
@@ -181,13 +187,248 @@
 
 {% endblock content %}
 {% block script %}
-    <script>
-             $(window).on('load', function() {
-                $('#status').fadeOut();
-                $('#preloader').delay(350).fadeOut('slow');
-                $('body').delay(350).css({
-                    'overflow': 'visible'
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script>
+            var spinner =  $("#spinner_loader");
+            var spinner2 =  $("#spinner_loader2");
+            spinner.hide();
+            spinner2.hide();
+
+            $('span .dropdown .dropdown-menu input').click(function(e) {
+                e.stopPropagation(); //This will prevent the event from bubbling up and close the dropdown when you type/click on text boxes.
+            });
+                let mode = localStorage.getItem('mytheme');
+                if(mode === 'dark'){
+                    $('body').attr('data-theme', 'dark');
+                    {#$('#preloader').css('background-color',' #1a1b1f');#}
+                    $('#chk').attr("checked", true);
+                     $('#logo1').fadeOut(function () {
+                        $('#logo2').fadeIn();
+                    });
+
+                }
+                else {
+                     $('body').removeAttr('data-theme')
+                     $('#chk').attr("checked", false);
+                     $('#logo2').fadeOut(function () {
+                        $('#logo1').fadeIn();
+                     });
+
+                }
+
+            $('#chk').change(function (e) {
+                if(e.target.checked){
+                    console.log('eeee');
+                    $('body').attr('data-theme', 'dark');
+                    localStorage.setItem('mytheme', 'dark');
+                    $('#logo1').fadeOut(function () {
+                        $('#logo2').fadeIn();
+                    });
+
+                }
+                else {
+                    console.log('ddd');
+                    $('body').removeAttr('data-theme')
+                    localStorage.setItem('mytheme', 'light');
+                      $('#logo2').fadeOut(function () {
+                        $('#logo1').fadeIn();
+                      });
+                }
+            })
+
+        </script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+{#        <script src="{% static 'js/scrollspy.min.js' %}"></script>#}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+        <!-- SLIDER -->
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/owl.init.js' %}"></script>
+        <!-- Magnific Popup -->
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/isotope.js' %}"></script>
+        <script src="{% static 'js/portfolio-filter.js' %}"></script>
+        <script src="{% static 'js/magnific.init.js' %}"></script>
+        <!-- Contact -->
+        <script src="{% static 'js/contact.js' %}"></script>
+        <!-- Counter -->
+{#        <script src="{% static 'js/counter.init.js' %}"></script>#}
+{#        paperjs and noice#}
+        <script src="{% static 'js/paper-core.js' %}"></script>
+        <script src="{% static 'js/simplex-noise.js' %}"></script>
+        <!-- Glitch -->
+{#        <script src="{% static 'js/mgGlitch.min.js' %}"></script>#}
+{#        <script src="{% static 'js/glitch.init.js' %}"></script>#}
+        <!-- Typed -->
+        <script src="{% static 'js/typed.js' %}"></script>
+        <script src="{% static 'js/typed.init.js' %}"></script>
+{#        <script src="{%  static 'js/ckeditor.js' %}"></script>#}
+{#        <!-- Counter -->#}
+{#        <script src="{% static 'js/switcher.j' %}s"></script>#}
+        <!-- Main Js -->
+        <script  src="{% static 'js/app.js' %}"></script>
+        <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
+{#        <script  src="{% static 'css/color/dark-mode-switch.min.js' %}"></script>#}
+        <script>
+
+            // Typed Text
+            $(".element2").each(function(){
+                var $this = $(this);
+                $this.typed({
+                strings: $this.attr('data-elements2').split(','),
+                typeSpeed: 100, // typing speed
+                backDelay: 3000 // pause before backspacing
                 });
             });
-    </script>
+
+           $(document).ready(function(){
+               var spinner =  $("#spinner_loader2");
+
+               $("#newsletter_form").submit(function(e){
+                    e.preventDefault();
+                    spinner.fadeIn( "slow" );
+                    var new_form_data = new FormData(this);
+                    {#var new_form_data =$("#contact-form").serialize() ;#}
+
+                    {#var fname =$("#first_name").val();#}
+                    {#var lname =$("#last_name").val();#}
+                    {#var email =$("#email").val();#}
+                    {#var subject =$("#subject").val();#}
+                    {#var message =$("#message").val();#}
+                    {# console.log(fname,lname,email,subject,message);#}
+                    $.ajax({
+                        method : $("#newsletter_form").attr('method'),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        url :  {% url 'frontend:addsubscribers' %},
+                        data: new_form_data,
+                        success : function(response){
+                            setTimeout(
+                                function () {
+                                    spinner.fadeOut( "slow" );
+                                     if (response.results === 'success') {
+                                        console.log(response.results);
+                                        $("#newsletter_form")[0].reset();
+                                        swal.fire({
+                                            title: "Success!",
+                                            text: response.form_success,
+                                            type: "success",
+                                            confirmButtonText: "Continue",
+                                        });
+                                     }
+                                     else {
+                                        spinner.fadeOut( "slow" );
+                                        console.log(response.results);
+                                        swal.fire({
+                                            title: "Error!",
+                                            text: "Form Is Invalid. Please Fill Each Input:",
+                                            type: "error",
+                                            confirmButtonText: "Retry"
+                                        });
+                                     }
+                                },3000
+                            )
+
+
+                        },
+                        error : function(response){
+                            spinner.fadeOut( "slow" );
+                            console.log(response);
+
+
+                        }
+                    });
+               });
+            });
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+        <script>
+            $(".modal-header").on("mousedown", function(mousedownEvt) {
+                var $draggable = $(this);
+                var x = mousedownEvt.pageX - $draggable.offset().left,
+                    y = mousedownEvt.pageY - $draggable.offset().top;
+                $("body").on("mousemove.draggable", function(mousemoveEvt) {
+                    $draggable.closest(".modal-dialog").offset({
+                        "left": mousemoveEvt.pageX - x,
+                        "top": mousemoveEvt.pageY - y
+                    });
+                });
+                $("body").one("mouseup", function() {
+                    $("body").off("mousemove.draggable");
+                });
+                $draggable.closest(".modal").one("bs.modal.hide", function() {
+                    $("body").off("mousemove.draggable");
+                });
+            });
+            $(document).ready(function(){
+               var spinner =  $("#spinner_loader");
+
+               $("#contact-form").submit(function(e){
+                    e.preventDefault();
+                    spinner.fadeIn( "slow" );
+                    var new_form_data = new FormData(this);
+                    {#var new_form_data =$("#contact-form").serialize() ;#}
+
+                    var fname =$("#first_name").val();
+                    var lname =$("#last_name").val();
+                    var email =$("#email").val();
+                    var subject =$("#subject").val();
+                    var message =$("#message").val();
+                     console.log(fname,lname,email,subject,message);
+                    $.ajax({
+                        method : $("#contact-form").attr('method'),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+
+                        url :  {% url 'frontend:addmessage' %},
+                        data: new_form_data,
+                        {##}
+                        success : function(response){
+
+                            setTimeout(
+                                function () {
+                                    spinner.fadeOut( "slow" );
+                                     if (response.results === 'success') {
+                                        console.log(response.results);
+                                        $("#contact-form")[0].reset();
+                                        swal.fire({
+                                            title: "Success!",
+                                            text: response.form_success,
+                                            {#text: "sent",#}
+                                            type: "success",
+                                            confirmButtonText: "Continue",
+                                        });
+
+                                    }
+                                    else {
+                                        spinner.fadeOut( "slow" );
+                                        console.log(response.results);
+                                        swal.fire({
+                                            title: "Error!",
+                                            text: "Form Is Invalid. Please Fill Each Input: "+ "\n" + response.form_error_message,
+                                            type: "error",
+                                            confirmButtonText: "Retry"
+                                        });
+                                    }
+                                },3000
+                            )
+
+
+                        },
+                        error : function(response){
+                            spinner.fadeOut( "slow" );
+                            console.log(response);
+
+
+                        }
+                    });
+               });
+            });
+        </script>
+
 {% endblock script %}

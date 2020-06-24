@@ -55,11 +55,11 @@
           var scroll = $(window).scrollTop();
 
         if (scroll <= 50) {
-            console.log(scroll);
+            // console.log(scroll);
             $('#ckh').removeClass('mlabel');
             $('#ckh').addClass('mlabel2');
         }else {
-             console.log(scroll);
+             // console.log(scroll);
              $('#ckh').removeClass('mlabel2');
             $('#ckh').addClass('mlabel');
 

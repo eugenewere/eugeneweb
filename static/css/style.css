@@ -22,11 +22,16 @@
  ======================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;display=swap");
 :root{
-  --bgcolor: #ecf0f3;
-  --boxshaddowbg: linear-gradient(45deg, #ecf0f3, #ffffff);
-  --boxshaddowbg2: linear-gradient(145deg, #d4d8db, #fdffff);
-  --boxshadoww: 8px 8px 5px #cbced1, -5px -4px 5px #ffffff;
-  --boxshadowwinset: inset 10px 9px 5px #c6cacc, inset -8px -8px 5px #ffffff;
+  --bgcolor:#dadee1;
+  /*--bgcolor: #ecf0f3;*/
+  /*--boxshaddowbg: linear-gradient(45deg, #c1c1c1, #ffffff);*/
+  --boxshaddowbg: #dadee1;
+  /*--boxshaddowbg2: linear-gradient(145deg, #c1c1c1, #ffffff);*/
+  --boxshaddowbg2: #dadee1;
+  --boxshadoww: 8px 8px 5px #c6cacc, -4px -2px 5px #ffffff;
+  --boxshadowwinset: inset 7px 7px 2px #9c9d9e, inset -4px -2px 5px #ffffff;
+  --scrollbarBG: #fcb5b5;
+  --thumbBG: #a40218;
 }
 
 .btn {
@@ -541,7 +546,7 @@ background-color: transparent;
 .nav-sticky.navbar-custom {
   margin-top: 0px;
   padding: 12px 0px;
-  background-color:#ecf0f3;
+  background-color:var(--bgcolor);
   -webkit-box-shadow: 0 10px 33px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 33px rgba(0, 0, 0, 0.1);
   color: #161c2d !important;
@@ -576,7 +581,7 @@ background-color: transparent;
 }
 
 .nav-sticky.navbar-custom.sticky-light {
-  background-color: #ffffff;
+  background-color: var(--bgcolor);
 }
 
 .nav-sticky .navbar-brand {
@@ -615,13 +620,13 @@ background-color: transparent;
 @media (max-height: 480px) {
   .navbar-nav {
     max-height: 200px;
-    overflow-y: auto;
+    overflow-y: visible !important;
   }
 }
 
 @media (min-width: 200px) and (max-width: 768px) {
   .navbar-custom {
-    background-color:#ffffff !important;
+    background-color:var(--bgcolor) !important;
     padding: 0 !important;
   }
   .navbar-custom .navbar-nav .nav-item .nav-link {
@@ -1798,7 +1803,7 @@ ul.pattern .dark-pink {
 	width: 44px;
   margin-bottom: 1px;
 	transform: scale(1.5);
-  box-shadow: 4px 4px 5px #cbced1, -6px -4px 5px #ffffff;
+  box-shadow: 4px 4px 5px #cbced1, -2px -2px 2px #ffffff
 }
  .mlabel2 {
 	background-color: transparent;
@@ -1816,11 +1821,11 @@ ul.pattern .dark-pink {
     box-shadow:  0 0 0 transparent;
 }
  .mlabel .mball, .mlabel2 .mball {
-	background-color: rgba(0, 0, 0, 0.84);
+	background-color: rgba(0, 0, 0, 1.0);
 	border-radius: 50%;
 	position: absolute;
 	top: 2px;
-	left: 2px;
+	left: 4px;
 	height: 14px;
 	width: 14px;
 	transform: translateX(0px);
@@ -1839,4 +1844,20 @@ ul.pattern .dark-pink {
 }
 .text-shadow{
   text-shadow:-5px 7px 5px #cbced1, 6px -6px 5px #ffffff
+}
+
+body::-webkit-scrollbar, div::-webkit-scrollbar {
+  width: 11px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
 }

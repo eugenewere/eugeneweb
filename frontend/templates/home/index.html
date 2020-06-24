@@ -54,8 +54,10 @@
                                 {% if a.icon %}
                                     <i class="{{ a.icon }} px-2"></i>
                                 {% endif %}
-                                {{ a.message|capfirst }}</span>
-                            <span style="color: {{ a.text_color }};" aria-hidden="true">&times;</span>
+                                <span class="element2" data-elements2="{{ a.message|capfirst }}_"></span>
+
+                            </span>
+                            <span style="color: {{ a.text_color }};" aria-hidden="true"></span>
                         </div>
                     </div>
                 {% endfor %}
@@ -78,20 +80,19 @@
 			    <div class="collapse navbar-collapse" id="navbarCollapse">
 			        <ul class="navbar-nav ml-auto">
 			            <li class="nav-item active">
-			                <a class="nav-link" href="#home">Home</a>
+			                <a class="nav-link position-relative" href="#home">Home</a>
                         </li><!--end nav item-->
 			            <li class="nav-item">
-			                <a class="nav-link" href="#services">Services</a>
+			                <a class="nav-link position-relative" href="#services">Services</a>
 			            </li><!--end nav item-->
                         <li class="nav-item">
-			                <a class="nav-link" href="#resume">Resume</a>
+			                <a class="nav-link position-relative" href="#resume">Resume</a>
 			            </li><!--end nav item-->
 			            <li class="nav-item">
-			                <a class="nav-link" href="#projects">Projects</a>
+			                <a class="nav-link position-relative" href="#projects">Projects</a>
                         </li><!--end nav item-->
-
 			            <li class="nav-item">
-			                <a class="nav-link" href="#contact">Contact</a>
+			                <a class="nav-link position-relative" href="#contact">Contact</a>
                         </li><!--end nav item-->
                         <li class="nav-item d-flex justify-content-center align-items-center">
                               <div class="ml-md-3">
@@ -127,7 +128,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-12 title-carousel-wrapper" style="padding-left: 80px" >
                                             <div class="title-heading mt-5">
-                                                <h1 class="heading text-light mt-3">I Am <span class="element text-custom" data-elements="{{ carousel.title }}"></span></h1>
+                                                <h1 class="heading text-light mt-3">I Am <span class="element text-custom" data-elements="{{ carousel.title }} _"></span></h1>
                                                 <p class="para-desc text-light">{{ carousel.sub_title }}.</p>
                                                 <div class="mt-4">
                                                     <a href="{% url 'frontend:view_cv' %}" class="btn btn-custom-outline rounded">Download CV <i class="mdi mdi-download"></i></a>
@@ -734,10 +735,184 @@
 
  {% endblock content %}
 {% block script %}
-    <script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script>
+            var spinner =  $("#spinner_loader");
+            var spinner2 =  $("#spinner_loader2");
+            spinner.hide();
+            spinner2.hide();
+
+            $('span .dropdown .dropdown-menu input').click(function(e) {
+                e.stopPropagation(); //This will prevent the event from bubbling up and close the dropdown when you type/click on text boxes.
+            });
+                let mode = localStorage.getItem('mytheme');
+                if(mode === 'dark'){
+                    $('body').attr('data-theme', 'dark');
+                    {#$('#preloader').css('background-color',' #1a1b1f');#}
+                    $('#chk').attr("checked", true);
+                     $('#logo1').fadeOut(function () {
+                        $('#logo2').fadeIn();
+                    });
+
+                }
+                else {
+                     $('body').removeAttr('data-theme')
+                     $('#chk').attr("checked", false);
+                     $('#logo2').fadeOut(function () {
+                        $('#logo1').fadeIn();
+                     });
+
+                }
+
+            $('#chk').change(function (e) {
+                if(e.target.checked){
+                    console.log('eeee');
+                    $('body').attr('data-theme', 'dark');
+                    localStorage.setItem('mytheme', 'dark');
+                    $('#logo1').fadeOut(function () {
+                        $('#logo2').fadeIn();
+                    });
+
+                }
+                else {
+                    console.log('ddd');
+                    $('body').removeAttr('data-theme')
+                    localStorage.setItem('mytheme', 'light');
+                      $('#logo2').fadeOut(function () {
+                        $('#logo1').fadeIn();
+                      });
+                }
+            })
+
+        </script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'js/scrollspy.min.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+        <!-- SLIDER -->
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/owl.init.js' %}"></script>
+        <!-- Magnific Popup -->
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/isotope.js' %}"></script>
+        <script src="{% static 'js/portfolio-filter.js' %}"></script>
+        <script src="{% static 'js/magnific.init.js' %}"></script>
+        <!-- Contact -->
+        <script src="{% static 'js/contact.js' %}"></script>
+        <!-- Counter -->
+        <script src="{% static 'js/counter.init.js' %}"></script>
+{#        paperjs and noice#}
+        <script src="{% static 'js/paper-core.js' %}"></script>
+        <script src="{% static 'js/simplex-noise.js' %}"></script>
+        <!-- Glitch -->
+        <script src="{% static 'js/mgGlitch.min.js' %}"></script>
+        <script src="{% static 'js/glitch.init.js' %}"></script>
+        <!-- Typed -->
+        <script src="{% static 'js/typed.js' %}"></script>
+        <script src="{% static 'js/typed.init.js' %}"></script>
+        <script src="{%  static 'js/ckeditor.js' %}"></script>
+        <!-- Counter -->
+        <script src="{% static 'js/switcher.j' %}s"></script>
+        <!-- Main Js -->
+        <script  src="{% static 'js/app.js' %}"></script>
+        <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
+{#        <script  src="{% static 'css/color/dark-mode-switch.min.js' %}"></script>#}
+        <script>
+
+            // Typed Text
+            $(".element2").each(function(){
+                var $this = $(this);
+                $this.typed({
+                strings: $this.attr('data-elements2').split(','),
+                typeSpeed: 100, // typing speed
+                backDelay: 3000 // pause before backspacing
+                });
+            });
+
+           $(document).ready(function(){
+               var spinner =  $("#spinner_loader2");
+
+               $("#newsletter_form").submit(function(e){
+                    e.preventDefault();
+                    spinner.fadeIn( "slow" );
+                    var new_form_data = new FormData(this);
+                    {#var new_form_data =$("#contact-form").serialize() ;#}
+
+                    {#var fname =$("#first_name").val();#}
+                    {#var lname =$("#last_name").val();#}
+                    {#var email =$("#email").val();#}
+                    {#var subject =$("#subject").val();#}
+                    {#var message =$("#message").val();#}
+                    {# console.log(fname,lname,email,subject,message);#}
+                    $.ajax({
+                        method : $("#newsletter_form").attr('method'),
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        url :  {% url 'frontend:addsubscribers' %},
+                        data: new_form_data,
+                        success : function(response){
+                            setTimeout(
+                                function () {
+                                    spinner.fadeOut( "slow" );
+                                     if (response.results === 'success') {
+                                        console.log(response.results);
+                                        $("#newsletter_form")[0].reset();
+                                        swal.fire({
+                                            title: "Success!",
+                                            text: response.form_success,
+                                            type: "success",
+                                            confirmButtonText: "Continue",
+                                        });
+                                     }
+                                     else {
+                                        spinner.fadeOut( "slow" );
+                                        console.log(response.results);
+                                        swal.fire({
+                                            title: "Error!",
+                                            text: "Form Is Invalid. Please Fill Each Input:",
+                                            type: "error",
+                                            confirmButtonText: "Retry"
+                                        });
+                                     }
+                                },3000
+                            )
 
 
-        $(document).ready(function(){
+                        },
+                        error : function(response){
+                            spinner.fadeOut( "slow" );
+                            console.log(response);
+
+
+                        }
+                    });
+               });
+            });
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+        <script>
+            $(".modal-header").on("mousedown", function(mousedownEvt) {
+                var $draggable = $(this);
+                var x = mousedownEvt.pageX - $draggable.offset().left,
+                    y = mousedownEvt.pageY - $draggable.offset().top;
+                $("body").on("mousemove.draggable", function(mousemoveEvt) {
+                    $draggable.closest(".modal-dialog").offset({
+                        "left": mousemoveEvt.pageX - x,
+                        "top": mousemoveEvt.pageY - y
+                    });
+                });
+                $("body").one("mouseup", function() {
+                    $("body").off("mousemove.draggable");
+                });
+                $draggable.closest(".modal").one("bs.modal.hide", function() {
+                    $("body").off("mousemove.draggable");
+                });
+            });
+            $(document).ready(function(){
            var spinner =  $("#spinner_loader");
 
            $("#contact-form").submit(function(e){
@@ -802,5 +977,6 @@
                 });
            });
         });
-    </script>
+        </script>
+
 {% endblock script %}
