@@ -119,7 +119,7 @@
   }
 }
 
-[data-theme="dark"].btn {
+[data-theme="dark"] .btn {
   padding: 12px 24px;
   outline: none;
   border-radius: 0;
@@ -133,40 +133,41 @@
 
 }
 
-[data-theme="dark"].btn:focus {
+[data-theme="dark"] .btn:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-[data-theme="dark"].btn.btn-sm {
+[data-theme="dark"] .btn.btn-sm {
   padding: 7px 16px;
   font-size: 10px;
 }
 
-[data-theme="dark"].btn.btn-lg {
+[data-theme="dark"] .btn.btn-lg {
   padding: 14px 30px;
   font-size: 16px;
 }
 
-[data-theme="dark"].btn.btn-custom {
+[data-theme="dark"] .btn.btn-custom {
   color: #ffffff;
   background: #c52c20;
+   border-radius: 40px 40px 40px 20px !important;
 }
 
-[data-theme="dark"].btn.btn-custom:hover, [data-theme="dark"].btn.btn-custom:focus, [data-theme="dark"] .btn.btn-custom:active, [data-theme="dark"] .btn.btn-custom.active, [data-theme="dark"] .btn.btn-custom.focus {
+[data-theme="dark"] .btn.btn-custom:hover, [data-theme="dark"].btn.btn-custom:focus, [data-theme="dark"] .btn.btn-custom:active, [data-theme="dark"] .btn.btn-custom.active, [data-theme="dark"] .btn.btn-custom.focus {
   background-color: #161c2d !important;
   color: #ffffff !important;
   -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06) !important;
           box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
-[data-theme="dark"].btn.btn-custom-outline {
+[data-theme="dark"] .btn.btn-custom-outline {
   border: 1px solid #c52c20;
   color: #c52c20;
   background-color: transparent;
 }
 
-[data-theme="dark"].btn.btn-custom-outline:hover, [data-theme="dark"] .btn.btn-custom-outline:focus, [data-theme="dark"] .btn.btn-custom-outline:active, [data-theme="dark"] .btn.btn-custom-outline.active, [data-theme="dark"] .btn.btn-custom-outline.focus {
+[data-theme="dark"] .btn.btn-custom-outline:hover, [data-theme="dark"] .btn.btn-custom-outline:focus, [data-theme="dark"] .btn.btn-custom-outline:active, [data-theme="dark"] .btn.btn-custom-outline.active, [data-theme="dark"] .btn.btn-custom-outline.focus {
   background-color: #c52c20 !important;
   border-color: #c52c20 !important;
   color: #ffffff !important;
@@ -174,13 +175,13 @@
           box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
-[data-theme="dark"].btn.btn-outline-white {
+[data-theme="dark"] .btn.btn-outline-white {
   border: 1px solid #ffffff !important;
   color: #ffffff;
   background-color: transparent;
 }
 
-[data-theme="dark"].btn.btn-outline-white:hover, [data-theme="dark"] .btn.btn-outline-white:focus, [data-theme="dark"] .btn.btn-outline-white:active, [data-theme="dark"] btn.btn-outline-white.active, [data-theme="dark"] .btn.btn-outline-white.focus {
+[data-theme="dark"] .btn.btn-outline-white:hover, [data-theme="dark"] .btn.btn-outline-white:focus, [data-theme="dark"] .btn.btn-outline-white:active, [data-theme="dark"] btn.btn-outline-white.active, [data-theme="dark"] .btn.btn-outline-white.focus {
   background-color: #c52c20 !important;
   border: 1px solid #c52c20 !important;
   color: #ffffff !important;
@@ -188,21 +189,25 @@
           box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
-[data-theme="dark"].progress-box .progress {
+[data-theme="dark"] .progress-box .progress {
   height: 8px;
   overflow: visible;
   border: 1px solid #ced4da;
 }
 
-[data-theme="dark"].progress-box .progress .progress-bar {
-  height: 2px;
+[data-theme="dark"] .progress-box .progress .progress-bar {
+  height: 6px;
   border-radius: 4px;
   margin: auto 2px;
   -webkit-animation: animate-positive 3s;
           animation: animate-positive 3s;
+   -webkit-animation-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      -moz-animation-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+        -o-animation-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+           animation-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
 }
 
-[data-theme="dark"].progress-box .progress .progress-value {
+[data-theme="dark"] .progress-box .progress .progress-value {
   position: absolute;
   top: -38px;
   right: -20px;
@@ -1968,3 +1973,7 @@ background-color: transparent;
   border: 3px solid var(--scrollbarBG);
 }
 /*scrollbar*/
+ [data-theme="dark"] .init-floating-line, [data-theme="dark"] .floating-line-inner { position: relative; }
+ [data-theme="dark"] .floating-line-inner { z-index: 1; }
+ [data-theme="dark"] .floating-line { position: absolute; }
+ [data-theme="dark"] .floating-line-css-transition { transition: all .2s ease-in-out; }

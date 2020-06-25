@@ -21,6 +21,7 @@ def home(request):
         'services': Speciality.objects.all(),
         "pcs": Progresscounter.objects.first(),
         "pro_done": Portfolio.objects.filter(category__name__contains="Web").count(),
+        # "pro_done": Portfolio.objects.filter(category__).count(),
         "logo_done": Portfolio.objects.filter(category__name__contains="Logo Design").count(),
         "participations":WorkParticipation.objects.order_by("-created_at"),
         "expertise": Expertise.objects.all(),

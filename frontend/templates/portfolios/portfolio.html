@@ -37,6 +37,9 @@
                 transform: translateX(50%);
              }
         }
+        .categories{
+             border-radius: 40px 40px 40px 20px !important;
+        }
 
     </style>
 {% endblock style %}
@@ -138,9 +141,9 @@
             <div class="row justify-content-center mt-4 pt-2">
                 <div class="col-12 text-center">
                     <ul class="col container-filter portfolioFilter list-unstyled mb-0 text-center" id="filter">
-                        <li class="list-inline-item"><a class="categories rounded pl-3 pr-3 mb-2 active" data-filter="*">All</a></li>
+                        <li class="list-inline-item"><a class="categories  pl-3 pr-3 mb-2 active" data-filter="*">All</a></li>
                         {% for cate in categories %}
-                            <li class="list-inline-item"><a class="categories rounded pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a></li>
+                            <li class="list-inline-item"><a class="categories  pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a></li>
                         {% endfor %}
 
                     </ul>
@@ -239,7 +242,7 @@
         </script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-{#        <script src="{% static 'js/scrollspy.min.js' %}"></script>#}
+        <script src="{% static 'js/scrollspy.min.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <!-- SLIDER -->

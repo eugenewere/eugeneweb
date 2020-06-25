@@ -30,7 +30,12 @@
                 height: 450px;
             }
         }
-
+        .categories{
+                 border-radius: 40px 40px 40px 20px !important;
+            }
+        .expbtn{
+            border-radius: 40px 40px 14px 40px !important;
+        }
 
 
     </style>
@@ -78,7 +83,7 @@
 			    </button><!--end button-->
 
 			    <div class="collapse navbar-collapse" id="navbarCollapse">
-			        <ul class="navbar-nav ml-auto">
+			        <ul class="navbar-nav ml-auto examplelinks">
 			            <li class="nav-item active">
 			                <a class="nav-link position-relative" href="#home">Home</a>
                         </li><!--end nav item-->
@@ -167,8 +172,7 @@
                         <div class=" row" >
 
                             <div class="about-hero" >
-                                <h4 style="" class="title text-custom  myside-banner-text text-shadow"  data-elements="Web Designer, Web Developer, Photographer">
-                                    {{ about.name }}</h4>
+                                <h4 style="" class="title text-custom  myside-banner-text text-shadow "> {{ about.name }} </h4>
 
                                 <img style="position: absolute;" src="{{ about.image.url }}"  class="img-fluid mx-auto d-block position-relative " alt="">
 
@@ -180,7 +184,7 @@
 
                         <div class="section-title about-info mb-0 ml-lg-5 ml-md-3">
                             <h4 class="title text-custom mb-3" >{{ about.name }}</h4>
-                            <h6 class="designation mb-3">I'm Passionate <span class="text-custom">{% for c in categories %} {{ c.name }}, {% endfor %}</span></h6>
+                            <h6 class="designation mb-3">I'm Passionate In<span class="text-custom element2" data-elements2="{% for c in categories %} {{ c.name }}, {% endfor %}"></span></h6>
                             <p class="text-muted">{{ about.description }}.</p>
                             <div class="about-list">
                                 <ul class="list-unstyled">
@@ -410,9 +414,9 @@
                                             <ul class="nav nav-pills flex-column" id="pills-tab" role="tablist">
                                                 {% for cate in categories %}
                                                     <li class="nav-item mt-2 pt-2">
-                                                        <a class="nav-link {% if forloop.first %} active {% endif %}" id="pills-{{ cate.id }}-tab" data-toggle="pill" href="#pills{{ cate.id }}" role="tab" aria-controls="pills-cloud" aria-selected="false">
+                                                        <a class="expbtn nav-link {% if forloop.first %} active {% endif %}" id="pills-{{ cate.id }}-tab" data-toggle="pill" href="#pills{{ cate.id }}" role="tab" aria-controls="pills-cloud" aria-selected="false">
                                                             <div class="skill-container text-center pt-1 pb-1">
-                                                                <h4 class="title font-weight-normal mb-0 ">{{ cate.name|truncatewords:1 }} </h4>
+                                                                <h4 class="title font-weight-normal mb-0 ">{{ cate.name|truncatewords:1|slice:-2 }} </h4>
                                                             </div>
                                                         </a><!--end nav link-->
                                                     </li><!--end nav item-->
@@ -430,7 +434,7 @@
                                                             {% if cate.id == exp.category.id %}
                                                                 <div class="progress-box mt-4 pt-2">
                                                                     <h6 class="font-weight-normal">{{ exp.language }}</h6>
-                                                                    <div class="progress">
+                                                                    <div class="progress myshadow2">
                                                                         <div class="progress-bar position-relative bg-custom" style="width:{{ exp.percentage }}%;">
                                                                             <div class="progress-value d-block text-muted h6">
                                                                                 {{ exp.percentage }}%</div>
@@ -472,9 +476,10 @@
                 <div class="row justify-content-center mt-4 pt-2">
                     <div class="col-12 text-center">
                         <ul class="col container-filter portfolioFilter list-unstyled mb-0 text-center" id="filter">
-                            <li class="list-inline-item"><a class="categories rounded pl-3 pr-3 mb-2 active" data-filter="*">All</a></li>
+                            <li class="list-inline-item">
+                                <a class="categories  pl-3 pr-3 mb-2 active" data-filter="*">All</a></li>
                             {% for cate in categories %}
-                                <li class="list-inline-item"><a class="categories rounded pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a></li>
+                                <li class="list-inline-item"><a class="categories  pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a></li>
                             {% endfor %}
 
                         </ul>
@@ -489,26 +494,39 @@
                         <div class="col-lg-3 col-md-4 p-0 c-{{ port.category.id }}">
                             <div class="portfolio-box position-relative ml-0 mr-0">
                                 <div class="work-img position-relative overflow-hidden" style="height: 270px;">
-                                    {% if port.status == 'COOMINGSOON' %}
-                                        <div class="comming-soon position-absolute">
-                                            <h4 class="text-white">Cooming Soon</h4>
-                                        </div>
-                                    {% endif %}
+{#                                    {% if port.status == 'COOMINGSOON' %}#}
+{#                                        <div class="comming-soon position-absolute">#}
+{#                                            <h4 class="text-white">Cooming Soon</h4>#}
+{#                                        </div>#}
+{#                                    {% endif %}#}
+                                <figure class="c4-izmir c4-border-cc-1 c4-image-rotate-right c4-gradient-bottom-right c4-image-rotate-right" tabindex="0" style="--primary-color: #f12711; --secondary-color: #f51919; --image-opacity: .1;">
                                     <img src="{{ port.image.url }}" style="width: 100%; height: 100%;" class="img-fluid" alt="work-image">
-                                    <div class="overlay-work">
-                                        <div class="icon text-center">
-                                            <a  class="mfp-image" href="{{ port.image.url }}" data-toggle="tooltip" data-placement="left" title="{{ port.name|title }}">
-                                                <i class="mdi mdi-arrow-expand-all text-white"></i>
-                                            </a>
+                                    <figcaption class="c4-layout-bottom-left">
+                                        <div class="c4-reveal-left c4-delay-100">
+                                            <h3>
+                                            Some sample text
+                                          </h3>
                                         </div>
-                                        <div class="work-content">
-                                            <h6 class="title mb-0"><a {% if port.link %} target="_blank" {% endif %} href="{% if port.link %}{{ port.link }}{% else %}#{% endif %}" class="text-light text-uppercase">{{ port.name|capfirst }}</a></h6>
-                                            <small class="text-white-50">{{ port.category.name|title }}</small>
-                                        </div>
-                                    </div>
+                                    </figcaption>
+
+                                </figure>
+
+{#                                    <div class="overlay-work">#}
+{#                                        <div class="icon text-center">#}
+{#                                            <a  class="mfp-image" href="{{ port.image.url }}" data-toggle="tooltip" data-placement="left" title="{{ port.name|title }}">#}
+{#                                                <i class="mdi mdi-arrow-expand-all text-white"></i>#}
+{#                                            </a>#}
+{#                                        </div>#}
+{#                                        <div class="work-content">#}
+{#                                            <h6 class="title mb-0"><a {% if port.link %} target="_blank" {% endif %} href="{% if port.link %}{{ port.link }}{% else %}#{% endif %}" class="text-light text-uppercase">{{ port.name|capfirst }}</a></h6>#}
+{#                                            <small class="text-white-50">{{ port.category.name|title }}</small>#}
+{#                                        </div>#}
+{#                                    </div>#}
                                 </div>
                             </div>
                         </div><!--end col-->
+
+
                     {% endfor %}
 
 
@@ -813,7 +831,8 @@
         <script src="{% static 'js/typed.init.js' %}"></script>
         <script src="{%  static 'js/ckeditor.js' %}"></script>
         <!-- Counter -->
-        <script src="{% static 'js/switcher.j' %}s"></script>
+{#        <script src="{% static 'js/switcher.js' %}s"></script>#}
+
         <!-- Main Js -->
         <script  src="{% static 'js/app.js' %}"></script>
         <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
@@ -825,6 +844,14 @@
                 var $this = $(this);
                 $this.typed({
                 strings: $this.attr('data-elements2').split(','),
+                typeSpeed: 100, // typing speed
+                backDelay: 3000 // pause before backspacing
+                });
+            });
+            $(".element3").each(function(){
+                var $this = $(this);
+                $this.typed({
+                strings: $this.attr('data-elements3').split(','),
                 typeSpeed: 100, // typing speed
                 backDelay: 3000 // pause before backspacing
                 });
