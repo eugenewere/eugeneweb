@@ -25,7 +25,7 @@
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    <span></span>Home <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                   </li>
                 </ul>
             </nav>
@@ -77,6 +77,52 @@
                 </h4>
                 <h2 class="mb-5">o</h2>
 {#                <h6 class="card-text">Increased by 5%</h6>#}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7 p-3 grid-margin stretch-card">
+            <div class="card myshadow">
+              <div class="card-body" style="height: 600px;">
+                <div class="clearfix">
+                  <h4 class="card-title float-left"></h4>
+                    <div class="container-fluid ">
+
+                        <div id="chooser"></div>
+                        <div class="fill">
+                          <div class="clock hour-style-pill hour-text-style-large hour-display-style-all minute-style-line minute-display-style-fine-2 minute-text-style-outside hand-style-hollow " id="utility-clock">
+                            <div class="centre">
+                              <div class="dynamic"></div>
+                              <div class="expand round circle-1"></div>
+                              <div class="anchor hour">
+                                <div class="element thin-hand"></div>
+                                <div class="element fat-hand"></div>
+                              </div>
+                              <div class="anchor minute">
+                                <div class="element thin-hand"></div>
+                                <div class="element fat-hand minute-hand"></div>
+                              </div>
+                              <div class="anchor second">
+                                <div class="element second-hand second-hand-front"></div>
+                                <div class="element second-hand second-hand-back"></div>
+                              </div>
+                              <div class="expand round circle-2"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 p-3 grid-margin stretch-card">
+            <div class="card myshadow">
+              <div class="card-body">
+                <h4 class="card-title">Project</h4>
+
               </div>
             </div>
           </div>
@@ -347,5 +393,6 @@
             });
         }
     </script>
+     <script src="{% static 'purple/assets/js/clock.js' %}"></script>
 
 {% endblock script %}

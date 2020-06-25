@@ -501,6 +501,13 @@
 {#                                    {% endif %}#}
                                 <figure class="c4-izmir c4-border-cc-3 c4-image-rotate-right c4-gradient-bottom-right c4-image-rotate-right" tabindex="0" style="height: 100%;">
                                     <img src="{{ port.image.url }}" style="width: 100%; height: 100%;" class="img-fluid" alt="work-image">
+                                    {% if port.status == 'COOMINGSOON' %}
+                                        <figcaption class="c4-layout-bottom-left">
+                                         <div class="c4-rotate-down-right c4-delay-200" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                            <h4>Comming soon</h4>
+                                         </div>
+                                        </figcaption>
+                                    {% else %}
                                     <figcaption class="c4-layout-bottom-left">
                                         <div class="c4-rotate-down-right c4-delay-200" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
                                            <div class="icon text-center">
@@ -510,10 +517,11 @@
                                             </div>
                                         </div>
                                         <div class="c4-reveal-right c4-delay-100">
-                                            <h6 class="title mb-0"><a {% if port.link %} target="_blank" {% endif %} href="{% if port.link %}{{ port.link }}{% else %}#{% endif %}" class="text-light text-uppercase">{{ port.name|capfirst }}</a></h6><br>
+                                            <h6 class="title mb-0 c4-reveal-down  c4-delay-400"><a {% if port.link %} target="_blank" {% endif %} href="{% if port.link %}{{ port.link }}{% else %}#{% endif %}" class="text-light text-uppercase">{{ port.name|capfirst|truncatewords:2 }}</a></h6><br>
                                             <small style="margin-bottom: 10px;" class="text-white-50">{{ port.category.name|title }}</small>
                                         </div>
                                     </figcaption>
+                                {% endif %}
 
                                 </figure>
 

@@ -2,12 +2,12 @@
   ----------------------------- */
 .c4-izmir {
   --text-color: #ffffff;
-  --primary-color: #db000070;
-  --secondary-color: #b0000079;
+  --primary-color: #db000080;
+  --secondary-color: #b0000089;
   --padding: 1em;
   --transition-duration: 500ms;
   --border-margin: 15px;
-  --border-width: 3px;
+  --border-width: 5px;
   --border-color: #ffffff;
   --border-radius: 3px;
   --image-opacity: 0.25;
