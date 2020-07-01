@@ -1,5 +1,4 @@
 africastalking==1.2.0
-aioredis==1.3.1
 aniso8601==7.0.0
 asgiref==3.2.2
 asn1crypto==0.24.0
@@ -17,7 +16,6 @@ cleanup==1.0.3
 Click==7.0
 colorama==0.4.1
 constantly==15.1.0
-contextlib2==0.6.0.post1
 cryptography==2.7
 daphne==2.3.0
 defusedxml==0.6.0
@@ -80,7 +78,6 @@ pytz==2017.3
 redis==3.3.11
 requests==2.22.0
 requests-oauthlib==1.2.0
-schema==0.7.2
 six==1.12.0
 sorl-thumbnail==12.5.0
 SQLAlchemy==1.3.5
@@ -99,3 +96,18 @@ Werkzeug==0.15.4
 whitenoise==4.1.2
 wrapt==1.11.2
 zope.interface==4.6.0
+africastalking==1.2.0
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+contextlib2==0.6.0.post1
+Django==3.0.7
+django-cleanup==5.0.0
+idna==2.10
+Pillow==7.1.2
+pytz==2020.1
+requests==2.24.0
+schema==0.7.2
+sqlparse==0.3.1
+sweetify==2.0.0
+urllib3==1.25.9

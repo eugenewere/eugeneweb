@@ -141,20 +141,31 @@
             <div class="row justify-content-center mt-4 pt-2">
                 <div class="col-12 text-center">
                     <ul class="col container-filter portfolioFilter list-unstyled mb-0 text-center" id="filter">
-                        <li class="list-inline-item"><a class="categories  pl-3 pr-3 mb-2 active" data-filter="*">All</a></li>
+                        <li class="list-inline-item">
+                            <a data-fex="Search all or" class="categories kwk pl-3 pr-3 mb-2 active" data-filter="*">All</a>
+                        </li>
                         {% for cate in categories %}
-                            <li class="list-inline-item"><a class="categories  pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a></li>
+                            <li class="list-inline-item">
+                                <a data-fex="Search: for projects under {{ cate.name|capfirst }}" class="categories kwk pl-3 pr-3 mb-2" data-filter=".c-{{ cate.id }}">{{ cate.name|capfirst }}</a>
+                            </li>
                         {% endfor %}
 
                     </ul>
+                    <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                        <div class="form-group ">
+                            <label for="mysearch"></label>
+                            <input data-fil="*" placeholder="Search:" style="box-shadow: 7px 7px 6px #c6cacc, -2px -2px 7px #ffffff, inset 7px 7px 118px 0px #dadee1, inset -4px -2px 284px #dadee1; border-radius: 8px; !important;" type="text" class="form-control" id="mysearch" aria-describedby="emailHelp">
+    {#                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>#}
+                        </div>
+                    </div>
+
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
         <div class="container">
-            <div class="portfolioContainer row pt-2 mt-4">
+            <div class="portfolioContainer row pt-2 mt-4" id="portlist">
                 {% for port in projects %}
-
-                    <div class="col-lg-3 col-md-4 p-0 c-{{ port.category.id }}">
+                    <div class="col-lg-3 lili col-md-4 p-0 c-{{ port.category.id }}" data-me="{{ port.name }}">
                         <div class="portfolio-box position-relative ml-0 mr-0">
                             <div class="work-img position-relative overflow-hidden" style="height: 270px;">
                                  <figure class="c4-izmir c4-border-cc-3 c4-image-rotate-right c4-gradient-bottom-right c4-image-rotate-right" tabindex="0" style="height: 100%;">
@@ -201,8 +212,6 @@
                         </div>
                     </div><!--end col-->
                 {% endfor %}
-
-
             </div><!--end row-->
             <div class="row justify-content-center mt-4 pt-2">
                 <div class="col-12 text-center">
@@ -299,7 +308,6 @@
         <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
 {#        <script  src="{% static 'css/color/dark-mode-switch.min.js' %}"></script>#}
         <script>
-
             // Typed Text
             $(".element2").each(function(){
                 var $this = $(this);
@@ -309,7 +317,6 @@
                 backDelay: 3000 // pause before backspacing
                 });
             });
-
            $(document).ready(function(){
                var spinner =  $("#spinner_loader2");
 
@@ -456,6 +463,38 @@
                         }
                     });
                });
+            });
+            var dataa = [];
+            $('#filter').find('li a').each(function () {
+                console.log($(this).attr('data-fex'))
+                dataa.push($(this).attr('data-fex'));
+            });
+
+            var indexx = 0;
+            function RunSlideShow()
+            {
+                  $('#mysearch').attr('placeholder', dataa[indexx].toUpperCase());
+
+                 indexx = indexx + 1;
+                 if (indexx === dataa.length){
+                     indexx = 0;
+                 }
+                 window.setTimeout('RunSlideShow();', 2000);
+            }RunSlideShow();
+
+        </script>
+        <script>
+            $('.kwk').click(function () {
+                let xui = $(this).attr('data-filter');
+                $('#mysearch').attr('data-fil', xui.replace(/[ ,.]/g, ""));
+                {#console.log($(this).attr('data-filter'));#}
+            });
+            $('#mysearch').keyup(function () {
+               var value = $('#mysearch').val().toLowerCase();
+               $("#portlist .lili").css('display','block').filter(function() {
+                   {#$( "#portlist" ).load(window.location.href + " #portlist" )#}
+                 return $(this).attr('data-me').toLowerCase().trim().indexOf(value) === -1;
+               }).css('display','none');
             });
         </script>
 

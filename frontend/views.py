@@ -25,7 +25,7 @@ def home(request):
         "logo_done": Portfolio.objects.filter(category__name__contains="Logo Design").count(),
         "participations":WorkParticipation.objects.order_by("-created_at"),
         "expertise": Expertise.objects.all(),
-        "projects": Portfolio.objects.all(),
+        "projects": Portfolio.objects.all()[:12],
         "counter_image": CounterImages.objects.filter(status="ACTIVE").first(),
         "expertise_image": WorkExpertise.objects.filter(status="ACTIVE").first(),
         "available_image": AvailableForTheProject.objects.filter(status="ACTIVE").first(),
