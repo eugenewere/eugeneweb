@@ -132,3 +132,14 @@ def view_cv(request):
     }
     return render(request, 'cv/cv.html', context)
 
+def error_404(request, exception):
+    context = {}
+    response = render(request, "error-404.html", context=context)
+    response.status_code = 404
+    return response
+
+def error_500(request):
+    context = {}
+    response = render(request, "error-500.html", context=context)
+    response.status_code = 500
+    return response

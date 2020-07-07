@@ -149,7 +149,7 @@
         <div class="noise"></div>
         <div class="overlay"></div>
         <div class="terminal">
-            <img class="myimg" src="{% static 'images/portfoliofavicon2.png' %}" alt="">
+            <img class="myimg" src="{% get_static_prefix %}images/portfoliofavicon2.png" alt="">
             <h1>Error <span class="errorcode">404</span></h1>
             <p class="output">The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
             <p class="output">Please try to go back from here <a href="{% url 'frontend:home' %}">cd ../home/</a>.</p>
