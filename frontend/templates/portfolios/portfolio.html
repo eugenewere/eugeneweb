@@ -170,13 +170,13 @@
                             <div class="work-img position-relative overflow-hidden" style="height: 270px;">
                                  <figure class="c4-izmir c4-border-cc-3 c4-image-rotate-right c4-gradient-bottom-right c4-image-rotate-right" tabindex="0" style="height: 100%;">
                                     <img src="{{ port.image.url }}" style="width: 100%; height: 100%;" class="img-fluid" alt="work-image">
-                                {% if port.status == 'COOMINGSOON' %}
-                                    <figcaption class="c4-layout-bottom-left">
-                                     <div class="c4-rotate-down-right c4-delay-200" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                                        <h4>Comming soon</h4>
-                                     </div>
-                                    </figcaption>
-                                {% else %}
+                                    {% if port.status == 'COOMINGSOON' %}
+                                        <figcaption class="c4-layout-bottom-left">
+                                         <div class="c4-rotate-down-right c4-delay-200" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                            <h4>Comming soon</h4>
+                                         </div>
+                                        </figcaption>
+                                    {% else %}
                                     <figcaption class="c4-layout-bottom-left">
                                         <div class="c4-rotate-down-right c4-delay-200" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
                                            <div class="icon text-center">
@@ -215,7 +215,7 @@
             </div><!--end row-->
             <div class="row justify-content-center mt-4 pt-2">
                 <div class="col-12 text-center">
-                    <a href="{% url 'frontend:portfolio' %}" class="btn btn-custom rounded">See more <i class="mdi mdi-chevron-right"></i></a>
+{#                    <a href="{% url 'frontend:portfolio' %}" class="btn btn-custom rounded">See more <i class="mdi mdi-chevron-right"></i></a>#}
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
@@ -308,6 +308,32 @@
         <script  src="{% static 'js/cusrom_cursor.js' %}"></script>
 {#        <script  src="{% static 'css/color/dark-mode-switch.min.js' %}"></script>#}
         <script>
+            !function($) {
+                "use strict";
+                $(window).on('load', function() {
+                    let mode = localStorage.getItem('mytheme');
+                    if(mode === 'dark'){
+                        document.body.setAttribute('data-theme', 'dark');
+                        // $('#preloader').css('background-color',' #1a1b1f');
+                        // $('#chk').prop("checked", true);
+                        $('#status').fadeOut();
+                        $('#preloader').delay(350).fadeOut('slow');
+                        $('body').delay(350).css({
+                            'overflow': 'visible'
+                        });
+                    }
+                    else {
+                         document.body.removeAttribute('data-theme');
+                         // $('#chk').prop("checked", false);
+                         $('#status').fadeOut();
+                         $('#preloader').delay(350).fadeOut('slow');
+                         $('body').delay(350).css({
+                            'overflow': 'visible'
+                         });
+                    }
+                });
+            }(jQuery);
+
             // Typed Text
             $(".element2").each(function(){
                 var $this = $(this);

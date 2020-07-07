@@ -1,3 +1,4 @@
+# import africastalking
 import africastalking
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -47,33 +48,39 @@ def portfolio(request):
 @csrf_exempt
 def addmessage(request):
     if request.method == "POST":
-        print(request.POST)
-        message = request.POST['messsage']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        subject = request.POST['subject']
+        # print(request.POST)
         form = MessageForm(request.POST)
+        message = request.POST.get('message')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        subject = request.POST.get('subject')
+
+        print(message, first_name, last_name, subject)
         print(form)
 
         if form.is_valid():
             try:
-                username = templateo.AFRICAS_TALKING_USERNAME  # use 'sandbox' for development in the test environment
+                username = templateo.AFRICAS_TALKING_USERNAME
+                # use 'sandbox' for development in the test environment
                 api_key = templateo.AFRICAS_TALKING_KEY
+                # print(username, api_key)
                 africastalking.initialize(username, api_key)
-                phonenumberr = templateo.AFRICAS_TALKING_PHONE
-                new_phone_number = f"{254}{phonenumberr[-9:]}"
-                messagee = "Subject:"+subject+" Message:"+ message;
+                # phonenumberr = 706833784
+                # new_phone_number = f"{254}{phonenumberr[-9:]}"
+                # print(new_phone_number)
+
                 sender = first_name+" "+last_name
+                messagee = "Subject: "+subject + "\n From: "+sender+"\n Message: " + message
+                # print(messagee)
                 sms = africastalking.SMS
-                response = sms.send(messagee, ["+" + new_phone_number], sender)
-                print('success')
+                # print(sms)
+                response = sms.send(messagee, ["+254706833784"])
+                # print('success', response)
             except:
                 print('NO INTERNET')
-                # print()
                 context = {
                     'results': 'error',
-                    'response': "No Internet "
-
+                    'response': "No Internet"
                 }
             form.save()
 

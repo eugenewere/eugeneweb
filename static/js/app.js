@@ -13,30 +13,7 @@
  *  03.  Loader         *
  *  04.  Back to top    *
  =======================*/
- $(window).on('load', function() {
 
-        let mode = localStorage.getItem('mytheme');
-        if(mode === 'dark'){
-            document.body.setAttribute('data-theme', 'dark');
-            // $('#preloader').css('background-color',' #1a1b1f');
-            // $('#chk').prop("checked", true);
-            $('#status').fadeOut();
-            $('#preloader').delay(350).fadeOut('slow');
-            $('body').delay(350).css({
-                'overflow': 'visible'
-            });
-        }
-        else {
-             document.body.removeAttribute('data-theme');
-             // $('#chk').prop("checked", false);
-             $('#status').fadeOut();
-             $('#preloader').delay(350).fadeOut('slow');
-             $('body').delay(350).css({
-                'overflow': 'visible'
-             });
-        }
-
-    });
 ! function($) {
     "use strict";
     //*********************/ 
@@ -85,7 +62,30 @@
     //       Loader       */
     //*********************/ 
 
+     $(window).on('load', function() {
 
+        let mode = localStorage.getItem('mytheme');
+        if(mode === 'dark'){
+            document.body.setAttribute('data-theme', 'dark');
+            // $('#preloader').css('background-color',' #1a1b1f');
+            // $('#chk').prop("checked", true);
+            $('#status').fadeOut();
+            $('#preloader').delay(350).fadeOut('slow');
+            $('body').delay(350).css({
+                'overflow': 'visible'
+            });
+        }
+        else {
+             document.body.removeAttribute('data-theme');
+             // $('#chk').prop("checked", false);
+             $('#status').fadeOut();
+             $('#preloader').delay(350).fadeOut('slow');
+             $('body').delay(350).css({
+                'overflow': 'visible'
+             });
+        }
+
+    });
 
     //*********************/ 
     //    BACK TO TOP     */

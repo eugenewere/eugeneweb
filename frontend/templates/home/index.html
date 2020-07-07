@@ -194,7 +194,7 @@
                                     <li><span class="list-title list-inline-item">Phone : </span> <span> {{ about.phone }}</span></li>
                                 </ul>
                             </div>
-                            <img class="" src="{{ about.signature.url }}" height="35" alt="">
+                            <img style="display: none;" class="" src="{{ about.signature.url }}" height="35" alt="">
                             <div class="mt-4">
                                 <a href="#projects" class="btn shdow btn-custom rounded mouse-down">View Portfolio</a>
                             </div>
@@ -674,7 +674,7 @@
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-lg-6">
-                                        <form action="{% url 'frontend:addmessage' %}" method="post" id="contact-form" >
+                                        <form action="{% url 'frontend:addmessage' %}" method="post" id="contact-form" enctype="multipart/form-data">
                                             <div class="row">
                                                 {% csrf_token %}
 
@@ -710,7 +710,10 @@
                                                 </div><!--end col-->
                                                 <div class="col-lg-12 p-3">
                                                     <div class="form-group inp">
-                                                        <textarea name="message" id="messsage " rows="4" class="rounded myshadow2"  placeholder="Your Message :"></textarea>
+                                                        <textarea name="message" id="messsage " rows="4" class="rounded myshadow2"  placeholder="Your Message :">
+
+
+                                                        </textarea>
                                                     </div>
                                                 </div><!--end col-->
 
