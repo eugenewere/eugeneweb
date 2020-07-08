@@ -40,6 +40,12 @@
         .categories{
              border-radius: 40px 40px 40px 20px !important;
         }
+         img{
+          filter: brightness(1) !important;
+        }
+        [data-theme="dark"] img:not(.about-hero-img){
+          filter: brightness(0.5) !important;
+        }
 
     </style>
 {% endblock style %}
@@ -133,7 +139,7 @@
                             <h4 class="title text-uppercase mb-4 pb-4">My Portfolio</h4>
                             <span></span>
                         </div>
-                        <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                        <p class="text-muted mx-auto para-desc mb-0 text-capitalize">I Can Provide Clean Code And Pixel Perfect Design Just Like These Below.</p>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
@@ -501,13 +507,15 @@
                 $('#mysearch').attr('data-fil', xui.replace(/[ ,.]/g, ""));
                 {#console.log($(this).attr('data-filter'));#}
             });
-            $('#mysearch').keyup(function () {
-               var value = $('#mysearch').val().toLowerCase();
-               $("#portlist .lili").css('display','block').filter(function() {
-                   {#$( "#portlist" ).load(window.location.href + " #portlist" )#}
-                 return $(this).attr('data-me').toLowerCase().trim().indexOf(value) === -1;
-               }).css('display','none');
-            });
+            {#$('#mysearch').keyup(function () {#}
+
+               {#$("#portlist .lili").css('display','block').filter(function() {#}
+               {#    $( "#portlist" ).load(window.location.href + " #portlist" )#}
+               {#  return $(this).attr('data-me').toLowerCase().trim().indexOf(value) === -1;#}
+               //}).css('display','none');
+
+
+            //});
         </script>
 
 {% endblock script %}

@@ -36,7 +36,12 @@
         .expbtn{
             border-radius: 40px 40px 14px 40px !important;
         }
-
+        img{
+          filter: brightness(1) !important;
+        }
+        [data-theme="dark"] img:not(.about-hero-img){
+          filter: brightness(0.5) !important;
+        }
 
     </style>
 {% endblock style %}
@@ -133,7 +138,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-12 title-carousel-wrapper" style="padding-left: 80px" >
                                             <div class="title-heading mt-5">
-                                                <h1 class="heading text-light mt-3">I Am <span class="element text-custom" data-elements="{{ carousel.title }} _"></span></h1>
+                                                <h1 class="heading text-light mt-3">I Am a <span class="element text-custom" data-elements="{{ carousel.title }} _"></span></h1>
                                                 <p class="para-desc text-light">{{ carousel.sub_title }}.</p>
                                                 <div class="mt-4">
                                                     <a href="{% url 'frontend:view_cv' %}" class="btn btn-custom-outline rounded">Download CV <i class="mdi mdi-download"></i></a>
@@ -174,7 +179,7 @@
                             <div class="about-hero" >
                                 <h4 style="" class="title text-custom  myside-banner-text text-shadow "> {{ about.name }} </h4>
 
-                                <img style="position: absolute;" src="{{ about.image.url }}"  class="img-fluid mx-auto d-block position-relative " alt="">
+                                <img style="position: absolute;" src="{{ about.image.url }}"  class="img-fluid mx-auto d-block position-relative about-hero-img" alt="">
 
                             </div>
                         </div>
@@ -212,7 +217,7 @@
                                     <h4 class="title text-uppercase mb-4 pb-4">Hobbies & Interests</h4>
                                     <span></span>
                                 </div>
-                                <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                                <p class="text-muted mx-auto para-desc mb-0 text-capitalize">These are the power source that drive me to become an all-round developer.</p>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -250,7 +255,11 @@
                                     <h4 class="title text-uppercase mb-4 pb-4">What I Offer ?</h4>
                                     <span></span>
                                 </div>
-                                <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                                <p class="text-muted mx-auto para-desc mb-0 text-capitalize">hands-on experiences in
+                                    {% for serv in services %}
+                                        {{ serv.name|capfirst }},
+
+                                    {% endfor %} and other tech trends allows delivering smart solutions that make a difference to customer expectations and business efficiency.</p>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -331,10 +340,10 @@
                     <div class="col-12 text-center">
                         <div class="section-title">
                             <div class="titles">
-                                <h4 class="title text-uppercase mb-4 pb-4">Work Participation</h4>
+                                <h4 class="title text-uppercase mb-4 pb-4">Work & Education Participation</h4>
                                 <span></span>
                             </div>
-                            <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p class="text-muted mx-auto para-desc mb-0">My Journey Through Becoming Who I Am Today.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -397,7 +406,7 @@
                                             <h4 class="title text-uppercase mb-4 pb-4">Work Expertise</h4>
                                             <span></span>
                                         </div>
-                                        <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                                        <p class="text-muted mx-auto para-desc mb-0" style="text-transform: capitalize">All the languages, framework and designs i am familiar with.</p>
                                     </div>
                                 </div><!--end col-->
                             </div><!--end row-->
@@ -468,7 +477,7 @@
                                 <h4 class="title text-uppercase mb-4 pb-4">My Portfolio</h4>
                                 <span></span>
                             </div>
-                            <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p class="text-muted mx-auto para-desc mb-0 text-capitalize">I can provide clean code and pixel perfect design just like these below.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -494,11 +503,7 @@
                         <div class="col-lg-3 col-md-4 p-0 c-{{ port.category.id }}">
                             <div class="portfolio-box position-relative ml-0 mr-0">
                                 <div class="work-img position-relative overflow-hidden" style="height: 270px;">
-{#                                    {% if port.status == 'COOMINGSOON' %}#}
-{#                                        <div class="comming-soon position-absolute">#}
-{#                                            <h4 class="text-white">Cooming Soon</h4>#}
-{#                                        </div>#}
-{#                                    {% endif %}#}
+
                                 <figure class="c4-izmir c4-border-cc-3 c4-image-rotate-right c4-gradient-bottom-right c4-image-rotate-right" tabindex="0" style="height: 100%;">
                                     <img src="{{ port.image.url }}" style="width: 100%; height: 100%;" class="img-fluid" alt="work-image">
                                     {% if port.status == 'COOMINGSOON' %}
@@ -521,21 +526,11 @@
                                             <small style="margin-bottom: 10px;" class="text-white-50">{{ port.category.name|title }}</small>
                                         </div>
                                     </figcaption>
-                                {% endif %}
+                                   {% endif %}
 
                                 </figure>
 
-{#                                    <div class="overlay-work">#}
-{#                                        <div class="icon text-center">#}
-{#                                            <a  class="mfp-image" href="{{ port.image.url }}" data-toggle="tooltip" data-placement="left" title="{{ port.name|title }}">#}
-{#                                                <i class="mdi mdi-arrow-expand-all text-white"></i>#}
-{#                                            </a>#}
-{#                                        </div>#}
-{#                                        <div class="work-content">#}
-{#                                            <h6 class="title mb-0"><a {% if port.link %} target="_blank" {% endif %} href="{% if port.link %}{{ port.link }}{% else %}#{% endif %}" class="text-light text-uppercase">{{ port.name|capfirst }}</a></h6>#}
-{#                                            <small class="text-white-50">{{ port.category.name|title }}</small>#}
-{#                                        </div>#}
-{#                                    </div>#}
+
                                 </div>
                             </div>
                         </div><!--end col-->
@@ -565,7 +560,7 @@
                 <div class="row justify-content-center align-items-center" style="height: 100%;">
                     <div class="col-12 text-center">
                         <h4 class="text-light">I Am Available For Freelancer Project.</h4>
-                        <p class="text-white-50 mx-auto mt-4 para-desc">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                        <p class="text-white-50 mx-auto mt-4 para-desc text-capitalize">For inquires, reach out from below.</p>
                         <div class="mt-4">
                             <a href="#contact" class="btn btn-outline-white rounded mouse-down rubberBand">hire me <i class="mdi mdi-chevron-down"></i></a>
                         </div>
@@ -587,12 +582,12 @@
                                 <h4 class="title text-uppercase mb-4 pb-4">Contact Me</h4>
                                 <span></span>
                             </div>
-                            <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p class="text-muted mx-auto para-desc mb-0 text-capitalize">Lets talk.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
                 <div class="row reverse_at_768">
-                    <div class="col-sm-12 col-md-12 col-lg-5">
+                    <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="col-md-12 mt-4 pt-2">
                             <div class="contact-detail  text-center">
                                 <div class="icon">
@@ -600,7 +595,7 @@
                                 </div>
                                 <div class="content mt-3">
                                     <h4 class="title text-uppercase">Phone</h4>
-                                    <p class="text-muted text-justify">Promising development turmoil inclusive education transformative community</p>
+                                    <p class="text-muted text-justify text-center text-capitalize">Reach out via text or phone</p>
                                     <a href="tel:+152534-468-854" class="text-custom">{{ about.phone }}</a>
                                 </div>
                             </div>
@@ -613,7 +608,7 @@
                                 </div>
                                 <div class="content mt-3">
                                     <h4 class="title text-uppercase">Email</h4>
-                                    <p class="text-muted text-justify">Promising development turmoil inclusive education transformative community</p>
+                                    <p class="text-muted text-justify text-center text-capitalize">Mail your inquires at</p>
                                     <a href="mailto:contact@example.com" class="text-custom">{{ about.email }}</a>
                                 </div>
                             </div>
@@ -626,14 +621,14 @@
                             </div>
                             <div class="content mt-3">
                                 <h4 class="title text-uppercase">Location</h4>
-                                <p class="text-muted text-justify">C/54 Northwest Freeway, Suite 558, <br>Houston, USA 485</p>
+                                <p class="text-muted text-justify text-center text-capitalize">Pinned on the map , <br>Kenya, {{ about.address }}</p>
 {#                                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9407101781107!2d36.92308971502147!3d-1.201765835879431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3fc70367960d%3A0x77880bc261bc5e12!2sKahawa%20Wendani!5e0!3m2!1sen!2ske!4v1588432291341!5m2!1sen!2ske" class="video-play-icon text-custom">View on Google map</a>#}
                                 <a href="{{ about.location_url }}" class="video-play-icon text-custom">View on Google map</a>
                             </div>
                         </div>
                     </div><!--end col-->
                     </div><!--end row-->
-                    <div class="col-sm-12 col-md-12 col-lg-7 p-lg-5 custom-height d-flex justify-content-center">
+                    <div class="col-sm-12 col-md-12 col-lg-8 p-lg-5 custom-height d-flex justify-content-center">
                         <div class="row position-relative overflow-hidden myshadow" style="height: 100%; width: 100%;">
                             <img src="{{ contuctus_image.image.url }}" style="position: absolute;top: 0; left:0; background-repeat: no-repeat; background-position: center;  height: 100%; width: 100%; object-fit:contain;" alt="">
                             <div class="my_animated_ovelay overlay-animated" ></div>
@@ -655,7 +650,7 @@
                                 <h4 class="title text-uppercase mb-4 pb-4">Send a Message</h4>
                                 <span></span>
                             </div>
-                            <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p class="text-muted mx-auto para-desc mb-0 text-capitalize">Lets Keep Intouch.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -749,7 +744,7 @@
                                 <h4 class="title text-uppercase mb-4 pb-4">Location</h4>
                                 <span></span>
                             </div>
-                            <p class="text-muted mx-auto para-desc mb-0">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects.</p>
+                            <p class="text-muted mx-auto para-desc mb-0 text-capitalize">Where the magic occurs.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->

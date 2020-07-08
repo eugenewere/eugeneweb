@@ -949,6 +949,9 @@ def editanouncementbarstatus(request, announce_id):
 def register(request):
     return render(request, "PurpleAdmin-Free-Admin-Template/pages/samples/register.html")
 
+def resetpassword(request):
+    return render(request, "PurpleAdmin-Free-Admin-Template/pages/samples/resetpasword.html")
+
 
 def register_user(request):
     if request.method == "POST":
@@ -1267,3 +1270,7 @@ def project_line_chart(request):
 
 def error(request):
     return render(request, 'PurpleAdmin-Free-Admin-Template/pages/samples/error-500.html')
+
+
+def getShortcode(request):
+    return None

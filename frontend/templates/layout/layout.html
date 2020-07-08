@@ -8,14 +8,12 @@
         <meta charset="utf-8" />
         <title>GeneDev</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
-        <meta name="keywords" content="bootstrap 4, premium, marketing, multipurpose" />
-        <meta content="Shreethemes" name="author" />
-
+        <meta name="description" content="I am a Kenyan developer able to build a Website or Android app from the ground up - from concept, navigation, layout and programming to UI/UX. Skilled at writing well-designed, testable and efficient code using current best practices in Web development. Fast learner, hard worker and team player who is proficient in an array of scripting languages and multimedia Web tools." />
+        <meta name="keywords" content="genedev, developer, IT-consultant, UI/UX designer," />
+        <meta content="Eugene Were" name="author" />
+        <meta content="genedev" name="application-name" />
         <!-- favicon -->
-{#        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">#}
         <link rel="shortcut icon" href="{% static 'images/portfolio/portfoliofavicon3.png' %}">
-{#        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">#}
         <!-- Bootstrap -->
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
         <!-- Magnific -->
@@ -66,14 +64,17 @@
                 .btn, .btn.btn-custom{
                     border-radius: 40px 40px 40px 20px !important;
                 }
+                img{
+                  filter: brightness(1) !important;
+                }
+                [data-theme="dark"] img:not(.about-hero-img){
+                  filter: brightness(0.5) !important;
+                }
 
             </style>
 
         {% endblock style %}
-
-
     </head>
-
     <body>
         <!-- Loader Start -->
         <div id="preloader">
@@ -98,17 +99,8 @@
                 </li>
 		    </ul>
         </div>
-
-
-
         {% block content %}
-
-
-
-
         {% endblock content %}
-
-
        <footer class="new_footer_area ">
             <div class="new_footer_top">
                 <div class="container">
@@ -152,11 +144,6 @@
                                 <h3 class="f-title f_600 t_color f_size_18">Other</h3>
                                 <ul class="list-unstyled f_list">
                                     <li><a class="kkk" href="{% url 'frontend:view_cv' %}">View Resume</a></li>
-{#                                    <li><a href="#"></a></li>#}
-{#                                    <li><a href="#">Reporting</a></li>#}
-{#                                    <li><a href="#">Documentation</a></li>#}
-{#                                    <li><a href="#">Support Policy</a></li>#}
-{#                                    <li><a href="#">Privacy</a></li>#}
                                 </ul>
                             </div>
                         </div>
@@ -164,7 +151,7 @@
                             <div class="f_widget social-widget pl_70 wow fadeInLeft text-left" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
 
-                                    <p class="text-justify kkk" style="color: #6a7695;">Obviously I'M Web Designer. Experienced with all stages of the development cycle for dynamic web projects, Get In-touch.</p>
+                                    <p class="text-justify kkk" style="color: #6a7695;">I am a Kenya developer able to build a Website or Android app from the ground up - from concept, navigation, layout and programming to UI/UX . Skilled at writing well-designed, testable and efficient code using current best practices in Web development. Fast learner, hard worker and team player who is proficient in an array of scripting languages and multimedia Web tools.</p>
 
                                 <div class="f_social_icon">
                                     {% for s in request|social_ac %}

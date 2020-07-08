@@ -26,7 +26,7 @@ def home(request):
         "logo_done": Portfolio.objects.filter(category__name__contains="Logo Design").count(),
         "participations":WorkParticipation.objects.order_by("-created_at"),
         "expertise": Expertise.objects.all(),
-        "projects": Portfolio.objects.all()[:12],
+        "projects": Portfolio.objects.order_by("?")[:12],
         "counter_image": CounterImages.objects.filter(status="ACTIVE").first(),
         "expertise_image": WorkExpertise.objects.filter(status="ACTIVE").first(),
         "available_image": AvailableForTheProject.objects.filter(status="ACTIVE").first(),
@@ -40,7 +40,7 @@ def home(request):
 def portfolio(request):
     context = {
         'announces': AnnouncementBar.objects.filter(status='SHOW'),
-        "projects": Portfolio.objects.all(),
+        "projects": Portfolio.objects.order_by("?"),
         'categories': Category.objects.all(),
     }
     return render(request, 'portfolios/portfolio.html', context)

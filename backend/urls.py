@@ -10,11 +10,14 @@ urlpatterns = [
     path('deletecategory/<int:category_id>/', views.deletecategory,  name='deletecategory'),
     path('editcategory/<int:category_id>/', views.editcategory,  name='editcategory'),
 
-    path('register/', views.register, name='register'),
+    path('registerrrr/', views.register, name='register'),
+    path('getpinShortcode/', views.getShortcode, name='getpinShortcode'),
     path('register_user/', views.register_user, name='register_user'),
     path('login/', views.login, name='login'),
     path('login_user/', views.login_user, name='login_user'),
     path('logout/', views.logout_user, name='logout'),
+    path('resetpassword/', views.resetpassword, name='resetpassword'),
+
 
 
     # carousell

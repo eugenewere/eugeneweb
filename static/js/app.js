@@ -69,7 +69,7 @@
             document.body.setAttribute('data-theme', 'dark');
             // $('#preloader').css('background-color',' #1a1b1f');
             // $('#chk').prop("checked", true);
-            $('#status').fadeOut();
+            // $('#status').fadeOut();
             $('#preloader').delay(350).fadeOut('slow');
             $('body').delay(350).css({
                 'overflow': 'visible'
@@ -78,7 +78,7 @@
         else {
              document.body.removeAttribute('data-theme');
              // $('#chk').prop("checked", false);
-             $('#status').fadeOut();
+             // $('#status').fadeOut();
              $('#preloader').delay(350).fadeOut('slow');
              $('body').delay(350).css({
                 'overflow': 'visible'
@@ -113,12 +113,11 @@ $(document).ready(function() {
 
 $("#owl-example").owlCarousel({
    items:1,
-
+   loop:true,
    autoplay: 2000,
    autoplayHoverPause: true,
    animateOut: 'fadeOut',
    animateIn: 'fadeIn',
-   // {#navigation:true,#}
    navText: ["<span class='ion-md-arrow-back'></span>", "<span class='ion-chevron-right'></span>"],
    navigation : true,
     navigationText : ["prev","next"],

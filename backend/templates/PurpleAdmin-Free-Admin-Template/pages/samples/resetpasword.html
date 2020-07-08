@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'purple/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'purple/assets/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'purple/assets/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'purple/assets/images/favicon.png' %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+          <div class="row flex-grow">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left p-5 myshadow">
+                <div class="brand-logo">
+                  <img src="{% static 'images/darklogo.png' %}">
+                </div>
+
+                <h4>Reset Password</h4>
+
+
+                <div class="phoneform" id="one">
+                   <h6 class="font-weight-light">Enter Phone password.</h6>
+                  <form id="phoneform" method="POST" action="{% url 'backend:getpinShortcode' %}">
+                    {% csrf_token %}
+                    <div class="col-md-12 mb-3">
+                          <label for="id_new_password1">Enter Your PhoneNumber</label>
+                          <input  type="number" name="phone_number" class="form-control" id="id_new_password1" placeholder="PhoneNumber" required>
+                    </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
+                        </div>
+                  </form>
+                </div>
+
+                <div  class="pinconfirm" id="two" style="display:none;">
+                    <h6 class="font-weight-light">Enter The ShortCode</h6>
+{#                    <h2 class="py-4"></h2>#}
+                    <form id="pinform" method="post" action="">
+                        {% csrf_token %}
+    {#                    <input  type="number" name="phone_number" class="form-control" id="validationCustom055" placeholder="PhoneNumber" hidden>#}
+                        <div class="col-md-12 mb-3">
+                              <label for="id_new_password1">Enter Sms Pin:</label>
+                              <input type="text" name="short_code" class="form-control" id="validationCustom04"  required>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="pinreset" id="three" style="display: none;">
+                    <h6 class="font-weight-light">Enter New Pin.</h6>
+                    <form id="passwdform" action="" method="post">
+                         {% csrf_token %}
+                        <input  type="number" name="phone_number" class="form-control" id="validationCustom066ld" placeholder="PhoneNumber" hidden>
+                        <div class="col-md-12 mb-3">
+                          <label for="id_new_password1">New Pin:</label>
+                          <input maxlength="4" type="password" name="new_password1" class="form-control" id="validationCustom0b4" placeholder="Pin" required>
+                          <small id="passwordHelpBlock" class="form-text text-muted">
+                              Your pin must be 4 characters long, contain letters and numbers.
+                          </small>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                          <label for="validationCustom04">Confirm Pin</label>
+                          <input maxlength="4" type="password" name="new_password2" class="form-control" id="validationCustom095" placeholder="Pin" required>
+                          <small id="passwordHelpBlock" class="form-text text-muted">
+                              Your pin must be 4 characters long, contain letters and numbers.
+                          </small>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >SIGN IN</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class=" pt-3">
+                    <small class="text-muted medium-text">
+                        <a href="{% url 'backend:login' %}" class="ml-2">Sign In</a>
+                    </small>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+ <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'purple/assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+
+    <script src="{% static 'purple/assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'purple/assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'purple/assets/js/misc.js' %}"></script>
+    <!-- endinject -->
+    <script>
+        $(function () {
+
+           $('#phoneform').submit(function (e) {
+               e.preventDefault();
+
+                var id_new_password1 = document.getElementById('id_new_password1').value;
+
+
+               $.ajax({
+                   type: 'POST',
+                   url : $('#phoneform').attr('action'),
+                   data:{
+                       'phone_number' : id_new_password1,
+                       'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                   },
+                   dataType:'json',
+                   success : function (data) {
+                        if (data.results === 'success'){
+                            console.log(data+'success');
+                            $('#one').fadeOut();
+                            $('#two').fadeIn();
+                            swal.fire({
+                                title: "Success!",
+                                text: data.response,
+                                type: "success",
+                                confirmButtonText: "Continue",
+                            });
+                        }
+                        if(data.results === 'error') {
+                            $("#errorr").innerText = data.response;
+                            console.log(data+'error');
+                            swal.fire({
+                                title: "Error!",
+                                text: "",
+                                type: "error",
+                                confirmButtonText: "Retry"
+                            });
+                        }
+                   },
+
+               });
+
+           });
+
+       });
+        $(function () {
+
+           $('#pinform').submit(function (e) {
+               e.preventDefault();
+                {#var phone = document.getElementById('validationCustom055').value;#}
+                var pin = document.getElementById('validationCustom04').value;
+               $.ajax({
+                   type: 'POST',
+                   url : $('#pinform').attr('action'),
+                   data:{
+
+                       'short_code':pin,
+                       'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                   },
+                   dataType:'json',
+                   success : function (data) {
+                        if (data.results === 'success'){
+                            console.log(data+'success');
+                            $('#two').fadeOut();
+                            $('#three').fadeIn();
+                            $('#validationCustom066ld').attr('value', data.phone_number);
+                            swal.fire({
+                                title: "Success!",
+                                text: data.response,
+                                type: "success",
+                                confirmButtonText: "Continue",
+                            });
+                        }
+                        if(data.results === 'error') {
+                            $("#errorr").innerText = data.response;
+                            console.log(data+'error');
+                            swal.fire({
+                                title: "Error!",
+                                text: data.response,
+                                type: "error",
+                                confirmButtonText: "Retry"
+                            });
+                        }
+                   },
+
+               });
+
+           });
+
+       });
+        $(function () {
+
+           $('#passwdform').submit(function (e) {
+               e.preventDefault();
+                var phone = document.getElementById('validationCustom066ld').value;
+                var pin1 = document.getElementById('validationCustom0b4').value;
+                var pin2 = document.getElementById('validationCustom095').value;
+               $.ajax({
+                   type: 'POST',
+                   url : $('#passwdform').attr('action'),
+                   data:{
+                       'phone_number':phone,
+                       'password1':pin1,
+                       'password2':pin2,
+                       'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                   },
+                   dataType:'json',
+                   success : function (data) {
+                        if (data.results === 'success'){
+                            console.log(data+'success');
+                            $('#three').fadeOut();
+
+                            swal.fire({
+                                title: "Success!",
+                                text: data.response,
+                                type: "success",
+                                confirmButtonText: "Continue",
+                            });
+                        }
+                        if(data.results === 'error') {
+                            $("#errorr").innerText = data.response;
+                            console.log(data+'error');
+                            swal.fire({
+                                title: "Error!",
+                                text: data.response,
+                                type: "error",
+                                confirmButtonText: "Retry"
+                            });
+                        }
+                   },
+
+               });
+
+           });
+
+       });
+    </script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+      <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    {% load sweetify %}
+    {% sweetify %}
+  </body>
+</html>
