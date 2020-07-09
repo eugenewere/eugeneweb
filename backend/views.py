@@ -1,5 +1,6 @@
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Q
@@ -1274,3 +1275,22 @@ def error(request):
 
 def getShortcode(request):
     return None
+
+
+def changepassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            sweetify.success(request, title='Sucess' 'Your password was successfully updated!', button='ok', timer=25000)
+            # messages.success(request, '')
+            return redirect('backend:account')
+        else:
+            form = PasswordChangeForm(request.user, request.POST)
+            sweetify.error(request, title='Error' "'" + str(form.error_messages) + "'", button='ok', timer=25000)
+            # messages.error(request, '')
+    else:
+        form = PasswordChangeForm(request.user, request.POST)
+        # sweetify.success(request, title='Sucess' '+  +', button='ok', timer=5000)
+    return redirect('backend:account')

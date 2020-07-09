@@ -11,6 +11,7 @@ urlpatterns = [
     path('editcategory/<int:category_id>/', views.editcategory,  name='editcategory'),
 
     path('registerrrr/', views.register, name='register'),
+    path('changepassword/', views.changepassword, name='changepassword'),
     path('getpinShortcode/', views.getShortcode, name='getpinShortcode'),
     path('register_user/', views.register_user, name='register_user'),
     path('login/', views.login, name='login'),

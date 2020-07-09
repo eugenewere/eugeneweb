@@ -8,7 +8,7 @@
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
               <i class="mdi mdi-home"></i>
-            </span> Hobby </h3>
+            </span> Account </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
@@ -21,19 +21,16 @@
           <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Adding A Hobby</h4>
+                    <h4 class="card-title">Account</h4>
                     <!-- Modal starts -->
                     <div class="">
                         {% for admin in admins %}
                              <button type="button" class="btn btn-gradient-success " data-toggle="modal" data-target="#editcategory{{ admin.id }}">Edit Hobby<i class="mdi mdi-playlist-plus ml-1"></i></button>
                         {% endfor %}
+                        <a data-toggle="modal" data-target="#editpasword" href="" class="btn btn-gradient-success ">Change Password</a>
                     </div>
-
-
-
-                     {% for admin in admins %}
-                         <div class="modal fade" id="editcategory{{ admin.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal fade" id="editpasword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog " role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="card-title">Editing a Hobby</h5>
@@ -41,7 +38,61 @@
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                                <form action="{% url 'backend:updateaccount' admin.id  %}" id="addcategory" method="post">
+                                <form action="{% url 'backend:changepassword' %}" id="addcateg" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        {% csrf_token %}
+                                         <div class="col-sm-12 py-5 d-flex flex-column">
+                                            <div class="col-md-12 mb-3">
+                                              <label for="validationCustom04"> Current Password</label>
+                                              <input type="password" name="old_password" class="form-control" id="validationCustom04" placeholder=" Current Pin" required>
+                                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                                  Your password must be 4 characters long.
+                                                </small>
+
+                                            </div>
+
+                                            <div class="col-md-12 mb-3">
+                                              <label for="validationCustom05">New Password</label>
+                                              <input name="new_password1" type="password" class="form-control" id="validationCustom05" placeholder="New Pin" required>
+                                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                                  Your password must be 4 characters long.
+                                                </small>
+
+                                            </div>
+
+                                            <div class="col-md-12 mb-3">
+                                              <label for="validationCustom05">Retype Pin</label>
+                                              <input  name="new_password2" type="password" class="form-control" id="validationCustom05" placeholder="Retype Your Pin" required>
+                                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                                  Your password must be 4 characters long.
+                                                </small>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="button" class="btn btn-gradient-dark" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                          </div>
+                         </div>
+
+
+
+                     {% for admin in admins %}
+                         <div class="modal fade" id="editcategory{{ admin.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="card-title">Editing a Hobby</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <form action="{% url 'backend:updateaccount' admin.id  %}" id="addcategory" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         {% csrf_token %}
                                         <div class="row">
