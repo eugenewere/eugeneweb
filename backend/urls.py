@@ -144,7 +144,7 @@ urlpatterns = [
     path('editLanguage/<int:language_id>', views.editLanguage, name='editLanguage'),
     path('deleteLanguage/<int:language_id>', views.deleteLanguage, name='deleteLanguage'),
 
-    path('error', views.error, name = "error"),
+    # path('error', views.error, name = "error"),
     path('messages_chart', views.messages_chart, name='messages_chart'),
     path('project_pie_chart', views.project_pie_chart, name='project_pie_chart'),
     path('project_line_chart', views.project_line_chart, name='project_line_chart'),

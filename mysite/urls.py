@@ -21,7 +21,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # import frontend
 from mysite import settings
-
+handler404 = "frontend.views.error_404"
+handler500 = "frontend.views.error_500"
 
 urlpatterns = [
     path('djangoadmineugene/', admin.site.urls),
@@ -39,5 +40,4 @@ if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = "frontend.views.error_404"
-handler500 = "frontend.views.error_500"
+

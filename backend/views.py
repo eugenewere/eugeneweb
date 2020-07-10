@@ -991,16 +991,19 @@ def login_user(request):
                 if user.is_active:
                     if Admin.objects.filter(user_ptr_id=user.id).exists():
                         # login(request, user)
+                        # print(user)
                         auth_login(request, user)
                         sweetify.success(request, 'Success', text='Welcome to Your Palace', persistent='Continue')
                         return redirect('backend:home')
                 else:
-                    sweetify.error(request, 'Error', text='Error',
-                                   persistent='Retry')
+                    sweetify.error(request, 'Error', text='Error', persistent='Retry')
                     return redirect('backend:login')
             else:
                 sweetify.error(request, 'Error', text='Invalid login credentials', persistent='Retry')
                 return redirect('backend:login')
+        else:
+            sweetify.error(request, 'Error', text='User Does not exist', persistent='Retry')
+            return redirect('backend:login')
     return redirect('backend:login')
 
 
@@ -1294,3 +1297,4 @@ def changepassword(request):
         form = PasswordChangeForm(request.user, request.POST)
         # sweetify.success(request, title='Sucess' '+  +', button='ok', timer=5000)
     return redirect('backend:account')
+

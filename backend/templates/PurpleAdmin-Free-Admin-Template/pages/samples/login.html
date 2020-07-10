@@ -5,8 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Login Eugene</title>
     <!-- plugins:css -->
+
     <link rel="stylesheet" href="{% static 'purple/assets/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'purple/assets/vendors/css/vendor.bundle.base.css' %}">
     <!-- endinject -->
@@ -16,8 +17,9 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{% static 'purple/assets/css/style.css' %}">
+      <link rel="shortcut icon" href="{% static 'images/portfolio/portfoliofavicon3.png' %}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{% static 'purple/assets/images/favicon.png' %}" />
+{#    <link rel="shortcut icon" href="{% static 'purple/assets/images/favicon.png' %}" />#}
   </head>
   <body>
     <div class="container-scroller">
@@ -31,7 +33,7 @@
                 </div>
                 <h4>Hello! let's get started</h4>
                 <h6 class="font-weight-light">Sign in to continue.</h6>
-                <form class="pt-3" action="{% url 'backend:login_user' %}" method="post">
+                <form class="pt-3" action="{% url 'backend:login_user' %}" method="POST">
                     {% csrf_token %}
                   <div class="form-group">
                     <input type="text" style="background: var(--bgcolor) !important; border-radius: 10px; box-shadow: 5px 6px 3px #9ea2a5, -2px -2px 4px #ffffff; outline: none;" name="username" class="form-control form-control-sm " id="exampleInputEmail1" placeholder="Username Or Email">

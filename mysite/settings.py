@@ -31,6 +31,8 @@ SECRET_KEY = '*tnm4g17=vh%k@i#_gpy_ky&i4hese_+-$g%%^_1%=#))l+ru1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# Use the following LOGGING settings, then you should be able to see the error in the console.
+
 
 
 
