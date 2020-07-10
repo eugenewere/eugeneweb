@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, logout, update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
@@ -970,7 +970,7 @@ def register_user(request):
     return redirect('backend:register')
 
 
-def login(request):
+def loginn(request):
     return render(request, "PurpleAdmin-Free-Admin-Template/pages/samples/login.html")
 
 
@@ -990,9 +990,9 @@ def login_user(request):
             if user is not None:
                 if user.is_active:
                     if Admin.objects.filter(user_ptr_id=user.id).exists():
-                        # login(request, user)
+                        login(request, user)
                         # print(user)
-                        auth_login(request, user)
+                        # auth_login(request, user)
                         sweetify.success(request, 'Success', text='Welcome to Your Palace', persistent='Continue')
                         return redirect('backend:home')
                 else:
