@@ -990,9 +990,9 @@ def login_user(request):
             if user is not None:
                 if user.is_active:
                     if Admin.objects.filter(user_ptr_id=user.id).exists():
-                        # login(request, user)
+                        login(request, user)
                         # print(user)
-                        auth_login(request, user)
+                        # auth_login(request, user)
                         sweetify.success(request, 'Success', text='Welcome to Your Palace', persistent='Continue')
                         return redirect('backend:home')
                 else:
