@@ -1,18 +1,3 @@
-/* Template Name: Cristino - Responsive Personal Template
-   Author: Shreethemes
-   Version: 1.0.0
-   Created: August 2019
-   File Description: Main JS file of the template
-*/
-
-/************************/
-/*       INDEX          */
-/*=======================
- *  01.  Menu           *
- *  02.  Scrollspy      *
- *  03.  Loader         *
- *  04.  Back to top    *
- =======================*/
 
 ! function($) {
     "use strict";
@@ -42,7 +27,6 @@
 
         }
      });
-
     $('.navbar-nav a, .mouse-down').on('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
@@ -50,18 +34,13 @@
         }, 2500, 'easeInOutExpo');
         event.preventDefault();
     });
-
-
     //*********************/ 
     //      Scrollspy     */
     //*********************/ 
     $(".navbar-nav").scrollspy({ offset: 70 });
-
-
     //*********************/ 
     //       Loader       */
-    //*********************/ 
-
+    //*********************/
      $(window).on('load', function() {
 
         let mode = localStorage.getItem('mytheme');
@@ -86,7 +65,6 @@
         }
 
     });
-
     //*********************/ 
     //    BACK TO TOP     */
     //*********************/ 
@@ -96,43 +74,33 @@
         } else {
             $('.back-to-top').fadeOut();
         }
-    }); 
-
+    });
     $(".back-to-top").on("click", function() {
         $("html, body").animate({ scrollTop: 0 }, 3000);
         return false;
     });
 }(jQuery);
-
-
-
-
-
-
 $(document).ready(function() {
 
 $("#owl-example").owlCarousel({
    items:1,
    loop:true,
-   autoplay: 2000,
+   autoplay: 6000,
    autoplayHoverPause: true,
-   animateOut: 'fadeOut',
-   animateIn: 'fadeIn',
+   animateOut: 'flipOutX',
+   animateIn: 'flipInX',
    navText: ["<span class='ion-md-arrow-back'></span>", "<span class='ion-chevron-right'></span>"],
    navigation : true,
-    navigationText : ["prev","next"],
-    rewindNav : true,
-    scrollPerPage : true,
+   navigationText : ["prev","next"],
+   rewindNav : true,
+   scrollPerPage : true,
 
 });
 
 });
-
-
 var $animation_elements = $('.overlay-animated');
 var $window = $(window);
-
-function check_if_in_view() {
+function check_if_in_view(){
   var window_height = $window.height();
   // {#console.log(window_height);#}
   var window_top_position = $window.scrollTop();
@@ -156,17 +124,11 @@ function check_if_in_view() {
     }
   });
 }
-
 $window.on('scroll resize', check_if_in_view);
 $window.trigger('scroll');
-
-
-
-
 // socialholder
 var timeout;
 var social_holder = document.getElementById("social-holder");
-
 document.ontouchmove= function(){
      social_holder.style.right=5+"px";
   clearTimeout(timeout);
@@ -183,5 +145,5 @@ document.onmousemove = function(){
 
   }, 3000);
 };
-                // socialholder
+// socialholder
 

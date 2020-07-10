@@ -1,5 +1,5 @@
-EMAIL_HOST_USER = 'eugene.were1997@gmail.com'
-EMAIL_HOST_PASSWORD = 'nonininonini'
+EMAIL_HOST_USER = 'eugenewere6@gmail.com'
+EMAIL_HOST_PASSWORD = 'eugenewereportfolio1997'
 AFRICAS_TALKING_KEY = 'bb3dae1e6382a697c8ec1c3043032d94295e5641b3ac45857a70a8e6026acf3a'
 AFRICAS_TALKING_USERNAME = 'eugeneportfolio'
 # AFRICAS_TALKING_PHONE = 706833784
