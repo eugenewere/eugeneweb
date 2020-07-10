@@ -85,7 +85,7 @@ $(document).ready(function() {
 $("#owl-example").owlCarousel({
    items:1,
    loop:true,
-   autoplay: 6000,
+   autoplay: 10000,
    autoplayHoverPause: true,
    animateOut: 'flipOutX',
    animateIn: 'flipInX',
